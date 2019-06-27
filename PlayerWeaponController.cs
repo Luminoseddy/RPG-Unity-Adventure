@@ -13,7 +13,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     Transform spawnProjectile;
     CharacterStats characterStats;
-    XWeapon equippedWeapon;
+    IWeapon equippedWeapon;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerWeaponController : MonoBehaviour
         // This is where we destroy the item in the players hand. to swap/remove weapons.
         if(EquippedWeapon != null) 
         {
-            characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<XWeapon>().Stats);
+            characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
 
@@ -36,12 +36,12 @@ public class PlayerWeaponController : MonoBehaviour
         // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
         EquippedWeapon = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug),playerHand.transform.position, playerHand.transform.rotation);
 
-        equippedWeapon = EquippedWeapon.GetComponent<XWeapon>();
+        equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 
         // Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped.
-        if (EquippedWeapon.GetComponent<XProjectileWeapon>() != null)
+        if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
         {
-            EquippedWeapon.GetComponent<XProjectileWeapon>().ProjectileSpawn = spawnProjectile;
+            EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
         }
         
         equippedWeapon.Stats = itemToEquip.Stats;

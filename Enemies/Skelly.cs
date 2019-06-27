@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skelly : MonoBehaviour, XEnemy
+public class Skelly : MonoBehaviour, IEnemy
 {
     public float currentHealth;
     public float power, toughness;

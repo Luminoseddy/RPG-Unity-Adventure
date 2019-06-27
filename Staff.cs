@@ -13,7 +13,7 @@ using UnityEngine;
 */
 
 
-public class Staff: MonoBehaviour, XWeapon, XProjectileWeapon
+public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 {
     public List<BaseStat> Stats { get; set; }
     public Transform ProjectileSpawn { get; set; }

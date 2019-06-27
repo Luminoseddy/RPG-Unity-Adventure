@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface XEnemy
+public interface IEnemy
 {
     void TakeDamage(int amount);
     void PerformAttack();

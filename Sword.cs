@@ -11,7 +11,7 @@ using UnityEngine;
 */
 
 
-public class Sword : MonoBehaviour, XWeapon
+public class Sword : MonoBehaviour, IWeapon
 {
     public List<BaseStat> Stats { get; set; }
 

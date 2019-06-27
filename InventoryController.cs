@@ -17,7 +17,7 @@ public class InventoryController : MonoBehaviour
         List<BaseStat> swordStats = new List<BaseStat>();
 
         swordStats.Add(new BaseStat(6, "Power", "Your Level"));
-        sword = new Item(swordStats, "Staff");
+        sword = new Item(swordStats, "Sword");
     }
 
     private void Update()
