@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 8b7e84bb6eae34ea38c5ddb8c295b264
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {fileID: 3544770797508812232, guid: a4656033dfc424ed2a93f280aa88f53a,
+      type: 3}
+  - respawnPoint: {instanceID: 0}
+  - model: {instanceID: 0}
+  - sword: {instanceID: 0}
+  - bow: {instanceID: 0}
+  - gun: {instanceID: 0}
+  - bombPouch: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
