@@ -39,7 +39,7 @@ public class Fireball : MonoBehaviour
     {
         if(col.transform.tag == "Enemy")
         {
-            col.transform.GetComponent<XEnemy>().TakeDamage(Damage);
+            col.transform.GetComponent<IEnemy>().TakeDamage(Damage);
         }
         Extinguish(); // If enemy or not enemy, it destorys itself.
     }

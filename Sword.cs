@@ -42,7 +42,7 @@ public class Sword : MonoBehaviour, IWeapon
         if (col.tag == "Enemy")
         {
             // take the enemey, grab its reference/ component
-            col.GetComponent<XEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
+            col.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
 
         }
     }
