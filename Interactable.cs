@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     public NavMeshAgent playerAgent;
 
     private bool hasInteracted,
-                 isEnemy      ;
+                 isEnemy;
 
     public virtual void CheckPlayerAndPlayerAgentCollision(NavMeshAgent playerAgent)
     {
@@ -38,14 +38,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    // SOURCE 5:00 https://www.youtube.com/watch?v=vGEkq9yNzxw&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=9
     void EnsureLookDirection()
     {
         playerAgent.updateRotation = false;
         Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
         playerAgent.transform.LookAt(lookDirection);
-        playerAgent.updateRotation = true;
+        playerAgent.updateRotation = true; 
     }
-
 
     public virtual void Interact()
     {
