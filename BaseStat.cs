@@ -24,6 +24,14 @@ public class BaseStat : MonoBehaviour
         this.StatDescription = statDescription;
     }
 
+    [Newtonsoft.Json.JsonConstructor]
+    public BaseStat(int baseValue, string statName)
+    {
+        this.BaseAdditives = new List<StatBonus>();// Everytime new stat is created, it has an empty list of stat bonuses that it starts from and then gets created.
+        this.BaseValue = baseValue;
+        this.StatName = statName;
+    }
+
     public void AddStatBonus(StatBonus statBonus)
     {
         this.BaseAdditives.Add(statBonus);
@@ -43,5 +51,4 @@ public class BaseStat : MonoBehaviour
         FinalValue += BaseValue;
         return FinalValue;
     }
-
 }
