@@ -16,25 +16,23 @@ using UnityEngine;
 public class Staff: MonoBehaviour, XWeapon, XProjectileWeapon
 {
     public List<BaseStat> Stats { get; set; }
-
     public Transform ProjectileSpawn { get; set; }
-
+    private Animator animator;
     Fireball fireball;
 
-    private Animator animator;
-
+   
     void Start()
     {
         fireball = Resources.Load<Fireball>("Weapons/Projectiles/Fireball");
 
-        // Use this as reference to the object. Use this to trigger animation upon Attack
+        // Use as reference to the object. Use this to trigger animation upon Attack
         animator = GetComponent<Animator>();
     }
 
     public void PerformAttack()
     {
         //Debug.Log(this.name +"attack!");
-        animator.SetTrigger("Staff_Cast");
+        animator.SetTrigger("Base_Attack");
         //animator.SetTrigger("Base_Attack");
     }
 

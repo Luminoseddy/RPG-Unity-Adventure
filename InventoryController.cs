@@ -9,7 +9,7 @@ public class InventoryController : MonoBehaviour
     public PlayerWeaponController playerWeaponController;
 
     public Item sword;
-
+    
     private void Start()
     {
         playerWeaponController = GetComponent<PlayerWeaponController>();
@@ -19,7 +19,6 @@ public class InventoryController : MonoBehaviour
         swordStats.Add(new BaseStat(6, "Power", "Your Level"));
         sword = new Item(swordStats, "Staff");
     }
-
 
     private void Update()
     {

@@ -38,6 +38,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         equippedWeapon = EquippedWeapon.GetComponent<XWeapon>();
 
+        // Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped.
         if (EquippedWeapon.GetComponent<XProjectileWeapon>() != null)
         {
             EquippedWeapon.GetComponent<XProjectileWeapon>().ProjectileSpawn = spawnProjectile;
