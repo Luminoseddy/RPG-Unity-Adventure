@@ -8,11 +8,12 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    public Vector3 Direction { get; set;  }
-    public float Range  { get; set; }
-    public int Damage { get; set; }
+    private Vector3 spawnPosition;
+    public  Vector3 Direction { get; set;  }
+    public  float   Range     { get; set; }
+    public  int     Damage    { get; set; }
 
-    Vector3 spawnPosition;
+    
 
     private void Start()
     {

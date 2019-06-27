@@ -8,7 +8,8 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent playerAgent;
 
-    private bool hasInteracted;
+    private bool hasInteracted,
+                 isEnemy      ;
 
     public virtual void CheckPlayerAndPlayerAgentCollision(NavMeshAgent playerAgent)
     {
@@ -27,11 +28,24 @@ public class Interactable : MonoBehaviour
             // Checks the distance between playerAgent and player.
             if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
             {
-                Interact();
+                if (!isEnemy)
+                {
+                    Interact();
+                }
+                EnsureLookDirection();
                 hasInteracted = true;
             }
         }
     }
+
+    void EnsureLookDirection()
+    {
+        playerAgent.updateRotation = false;
+        Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
+        playerAgent.transform.LookAt(lookDirection);
+        playerAgent.updateRotation = true;
+    }
+
 
     public virtual void Interact()
     {

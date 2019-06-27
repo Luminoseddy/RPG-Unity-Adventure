@@ -50,14 +50,19 @@ public class WorldInteractions : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
+            // playerAgent.updateRotation = true; 
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
-            if (interactedObject.tag == "Interactable Object")
+            if (interactedObject.tag == "Enemy")
+            {
+                Debug.Log("Interactable Enemy Object Succes");
+                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
+            }
+            else if (interactedObject.tag == "Interactable Object")
             {
                 Debug.Log("Interactable Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
-
             else
             {
                 Debug.Log("Not clicking interactables..");
