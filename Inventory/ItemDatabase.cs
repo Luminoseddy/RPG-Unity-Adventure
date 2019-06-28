@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-
 // SOURCE 11:00 https://www.youtube.com/watch?v=S5fRFS9lNpc&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=10
-
 
 public class ItemDatabase : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class ItemDatabase : MonoBehaviour
     public static ItemDatabase Instance { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -31,7 +29,8 @@ public class ItemDatabase : MonoBehaviour
     private void BuildDatabase()
     {
         Items = JsonConvert.DeserializeObject<List<Item>>(Resources.Load<TextAsset>("JSON/Items").ToString());
-        Debug.Log(Items[0].Stats[0].StatName + " level is " + Items[0].Stats[0].GetCalculatedStatValue());
+        // Debug.Log(Items[0].Stats[0].StatName + " level is " + Items[0].Stats[0].GetCalculatedStatValue());
+        Debug.Log(Items[0].ItemName + " is a " + Items[0].ItemType.ToString());
         Debug.Log(Items[0].ItemName);
     }
 
