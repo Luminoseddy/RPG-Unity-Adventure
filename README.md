@@ -6,7 +6,7 @@ TextEdit Game script::  https://github.com/PalermoX/textRPG
 
 From there I wanted to bring the TextEdit game to life in Unity. 
 
-Only scripts are uploaded here. Graphics, Sounds, and everything else are stored somewhere else. 
+Only scripts are uploaded here. Graphics, Sounds, JSON files and everything else are stored somewhere else. 
 
 
 
