@@ -10,10 +10,10 @@ public class BaseStat : MonoBehaviour
 {
     public List<StatBonus> BaseAdditives { get; set; }
 
-    public int BaseValue { get; set; } // Default stats with no armor, no nothing.
-    public string StatName { get; set;  } // Display in character sheet in game
+    public int BaseValue          { get; set; } // Default stats with no armor, no nothing.
+    public string StatName        { get; set;  } // Display in character sheet in game
     public string StatDescription { get; set; }
-    public int FinalValue { get; set; }
+    public int FinalValue         { get; set; }
 
 
     public BaseStat(int baseValue, string statName, string statDescription)

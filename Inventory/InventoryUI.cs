@@ -4,36 +4,34 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-
     // Reference the inventory panel
     public RectTransform inventoryPanel;
     public RectTransform scrollViewContent;
-
-    bool menuIsActive             { get; set; }
-    InventoryUIItem itemContainer { get; set; }
-    Item currentSelectedItem      { get; set; }
+    bool MenuIsActive             { get; set; }
+    InventoryUIItem ItemContainer { get; set; }
+    Item CurrentSelectedItem      { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
-        itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
-        UIEventHandlerController.OnItemAddedToInventory += ItemAdded;
+        ItemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
+        UIEventHandler.OnItemAddedToInventory += ItemAdded;
         inventoryPanel.gameObject.SetActive(false); // Hides inventory on play
     }
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            menuIsActive = !menuIsActive;// if true then when button pressed false and vise versa.
-            inventoryPanel.gameObject.SetActive(menuIsActive);
+            MenuIsActive = !MenuIsActive;// if true then when button pressed false and vise versa.
+            inventoryPanel.gameObject.SetActive(MenuIsActive);
         }
     }
 
     // Update is called once per frame
     public void ItemAdded(Item item)
     {
-        InventoryUIItem emptyItem = Instantiate(itemContainer);
+        InventoryUIItem emptyItem = Instantiate(ItemContainer);
         emptyItem.SetItem(item);
         emptyItem.transform.SetParent(scrollViewContent);
     }

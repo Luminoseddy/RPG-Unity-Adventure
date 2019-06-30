@@ -10,7 +10,7 @@ public class InventoryUIDetails : MonoBehaviour
     Button selectedItemButton, itemInteractButton;
     Text itemNameText, itemDescriptionText, itemInteractButtonText;
 
-    private void Start()
+    void Start()
     {
         itemNameText           = transform.Find("Item_Name").GetComponent<Text>();
         itemDescriptionText    = transform.Find("Item_Description").GetComponent<Text>();
@@ -20,6 +20,7 @@ public class InventoryUIDetails : MonoBehaviour
 
     public void SetItem(Item item, Button selectedButton)
     {
+        itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
 
         selectedItemButton          = selectedButton;
@@ -32,7 +33,9 @@ public class InventoryUIDetails : MonoBehaviour
 
     public void OnItemInteract()
     {
-        if(item.ItemType == Item.ItemTypes.Consumable)
+        // Debug.Log("Testing on item interact: " + item.ItemType.ToString());
+
+        if(item.ItemType == Item.ItemTypes.Consumable) // Consumable ItemTypes value.
         {
             InventoryController.Instance.ConsumeItem(item);
             Destroy(selectedItemButton.gameObject);
@@ -42,6 +45,5 @@ public class InventoryUIDetails : MonoBehaviour
             InventoryController.Instance.EquipItem(item);
             Destroy(selectedItemButton.gameObject);
         }
-
     }
 }

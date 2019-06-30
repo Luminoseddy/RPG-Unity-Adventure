@@ -15,9 +15,9 @@ public class PlayerWeaponController : MonoBehaviour
     CharacterStats characterStats;
     IWeapon equippedWeapon;
 
-    private void Start()
+    void Start()
     {
-        spawnProjectile = transform.FindChild("ProjectileSpawn");
+        spawnProjectile = transform.Find("ProjectileSpawn");
 
         characterStats = GetComponent<CharacterStats>();
     }
@@ -34,7 +34,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         // Casting gameobject 
         // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
-        EquippedWeapon = (GameObject)Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug),playerHand.transform.position, playerHand.transform.rotation);
+        EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
 
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 

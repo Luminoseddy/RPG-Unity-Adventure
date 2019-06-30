@@ -22,7 +22,7 @@ public class InventoryUIItem : MonoBehaviour
     public void OnSelectItemButton()
     {
         // Go through the inventory controeller.
-        Debug.Log("Testing Inventory button.. We are in...");
+        Debug.Log("Clicking object inside inventory. Passed.");
         InventoryController.Instance.SetItemDetails(item, GetComponent<Button>());
     }
 }

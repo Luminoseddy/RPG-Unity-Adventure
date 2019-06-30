@@ -16,7 +16,7 @@ public class Item
 
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public ItemTypes ItemType   { get; set; }
-    public string ActionName { get; set; }
+    public string ActionName    { get; set; }
     public string ItemName      { get; set; }
     public bool   ItemModifier  { get; set; }
 
