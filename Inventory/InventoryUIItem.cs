@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class InventoryUIItem : MonoBehaviour
 {
     public Item item;
+    public Text itemText;
+    public Image itemImage;
 
     public void SetItem(Item item)
     {
@@ -17,6 +19,8 @@ public class InventoryUIItem : MonoBehaviour
     {
         // Item_Name, the UI element we're in search for. 
         this.transform.Find("Item_Name").GetComponent<Text>().text = item.ItemName;
+        //itemText.text = item.ItemName;
+        //itemImage.sprite = Resources.Load<Sprite>("UI/Icons/Items/" + item.ObjectSlug);
     }
 
     public void OnSelectItemButton()

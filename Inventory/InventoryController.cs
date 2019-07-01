@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class InventoryController : MonoBehaviour
 {
     /* REFERENCE TO WEAPON CONTROLLER */
-    public List<Item> playerItems = new List<Item>();
     public static InventoryController Instance { get; set; }
-
     public PlayerWeaponController playerWeaponController;
     public ConsumableController   consumableController;
     public InventoryUIDetails     inventoryUIDetailsPanel;
-    
+    public List<Item> playerItems = new List<Item>();
+
     void Start()
     {
         if (Instance != null && Instance != this)
@@ -25,8 +24,9 @@ public class InventoryController : MonoBehaviour
         }
         playerWeaponController = GetComponent<PlayerWeaponController>();
         consumableController   = GetComponent<ConsumableController>();
-        GiveItem("sword");
-        GiveItem("potion_log");
+
+        GiveItem("Sword"); // Strings must match JSON itemSlug strings. 
+        GiveItem("Potion_Log"); 
     }
 
     // Let the slug go through the database, and grab the instance.
@@ -34,7 +34,6 @@ public class InventoryController : MonoBehaviour
     {
         Item item = ItemDatabase.Instance.GetItem(itemSlug); // Talk to UI and add to list
         playerItems.Add(item);
-
         Debug.Log(playerItems.Count + " items in inventory. Added: " + itemSlug); // Tells you # of items and then what the item is from itemSlug
         UIEventHandler.ItemAddedToInventory(item);
     }
@@ -54,7 +53,7 @@ public class InventoryController : MonoBehaviour
         consumableController.ConsumeItem(itemToConsume);
     }
 
-    //private void Update()
+    //void Update()
     //{
     //    // Testing to equip weapon
     //    if (Input.GetKeyDown(KeyCode.Z))

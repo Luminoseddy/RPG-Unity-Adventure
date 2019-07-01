@@ -7,9 +7,8 @@ using UnityEngine;
 
 public class ConsumableController : MonoBehaviour
 {
-    CharacterStats stats;
+    CharacterStats stats; // Reference to Char stats. 
 
-    // Update is called once per frame
     void Start()
     {
         stats = GetComponent<CharacterStats>();
@@ -23,7 +22,10 @@ public class ConsumableController : MonoBehaviour
         {
             itemToSpawn.GetComponent<IConsumable>().Consume(stats);
         }
-
-        itemToSpawn.GetComponent<IConsumable>().Consume();
+        else
+        {
+            itemToSpawn.GetComponent<IConsumable>().Consume();
+        }
+        
     }
 }

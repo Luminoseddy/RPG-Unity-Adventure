@@ -6,20 +6,19 @@ using Newtonsoft.Json;
 public class Item 
 {
     /* Few properties Using BaseStats to define all items and weapons
-     * This is used inside the JSON File. 
-     */
+     * This is used inside the JSON File.  */
 
     public enum ItemTypes { Consumable, Weapon, Quest }
     public List<BaseStat> Stats { get; set; }
     public string ObjectSlug    { get; set; }
     public string Description   { get; set; }
+    public string ActionName    { get; set; }
+    public string ItemName      { get; set; }
+    public bool ItemModifier    { get; set; }
 
     [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public ItemTypes ItemType   { get; set; }
-    public string ActionName    { get; set; }
-    public string ItemName      { get; set; }
-    public bool   ItemModifier  { get; set; }
-
+    
     // Constructor
     public Item(List<BaseStat> _Stats, string _ObjectSlug)
     {

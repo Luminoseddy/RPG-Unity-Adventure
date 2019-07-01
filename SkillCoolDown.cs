@@ -51,6 +51,34 @@ public class SkillCoolDown : MonoBehaviour
                 skills[3].currentCoolDown = 0;
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            if (skills[4].currentCoolDown >= skills[4].coolDown)
+            {
+                skills[4].currentCoolDown = 0;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            if (skills[5].currentCoolDown >= skills[5].coolDown)
+            {
+                skills[5].currentCoolDown = 0;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            if (skills[6].currentCoolDown >= skills[6].coolDown)
+            {
+                skills[6].currentCoolDown = 0;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            if (skills[7].currentCoolDown >= skills[7].coolDown)
+            {
+                skills[7].currentCoolDown = 0;
+            }
+        }
     }
     void Update()
     {

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IConsumable 
 {
-    void Consume();
+    void Consume(); // Consumable that effects character stats needs a reference to the char stats.
     void Consume(CharacterStats stats);
 }
