@@ -34,7 +34,7 @@ public class InventoryUIDetails : MonoBehaviour
                 statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
             }     
         }
-
+        // test
         itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
 
