@@ -10,18 +10,31 @@ public class InventoryUIDetails : MonoBehaviour
     Button selectedItemButton, itemInteractButton;
     Text itemNameText, itemDescriptionText, itemInteractButtonText;
 
+    public Text statText;
     void Start()
     {
         itemNameText           = transform.Find("Item_Name").GetComponent<Text>();
         itemDescriptionText    = transform.Find("Item_Description").GetComponent<Text>();
         itemInteractButton     = transform.Find("Button").GetComponent<Button>();
         itemInteractButtonText = itemInteractButton.transform.Find("Text").GetComponent<Text>();
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); // Deactivate the panel.
     }
 
     public void SetItem(Item item, Button selectedButton)
     {
         gameObject.SetActive(true);
+
+        statText.text = ""; // Empty the string when adding data so that they don't concatenate.
+
+        // Source@6:30 https://www.youtube.com/watch?v=MECFk-6euQ0&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=13
+        if (item.Stats != null)
+        {
+            foreach(BaseStat stat in item.Stats)
+            {
+                statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
+            }     
+        }
+
         itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
 
@@ -48,7 +61,7 @@ public class InventoryUIDetails : MonoBehaviour
             Destroy(selectedItemButton.gameObject);
         }
 
-        item = null;
+        item = null; // Null out the item once its used
         gameObject.SetActive(false);
     }
 }

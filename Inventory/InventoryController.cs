@@ -26,7 +26,7 @@ public class InventoryController : MonoBehaviour
         consumableController   = GetComponent<ConsumableController>();
 
         GiveItem("Sword"); // Strings must match JSON itemSlug strings. 
-        GiveItem("Potion_Log"); 
+        GiveItem("Heal_Potion"); 
     }
 
     // Let the slug go through the database, and grab the instance.
