@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     public float health = 100;
     public Slider healthBar;
 
+    public CharacterStats characterStats;
+
 
 
     /* VELOCITY 
@@ -124,13 +126,13 @@ public class Player : MonoBehaviour
         METHODS
        ============================================================================================================================================
         Start is called before the first frame update */
-    void Start(){
+    void Start()
+    {
+        characterStats = new CharacterStats(10, 10, 10);
 
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
-
-
     }
 
     /* Update is called once per frame */
@@ -158,7 +160,7 @@ public class Player : MonoBehaviour
     {
         healthBar.value = health;
 
-        // health = health - (healthGainRate * Time.deltaTime); // Reduces health automatically as time passes.
+         health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
 
         if (health <= 0 || health >= 100)
         {

@@ -14,7 +14,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour, IWeapon
 {
     public List<BaseStat> Stats { get; set; }
-
+    public CharacterStats CharacterStats { get; set; }
     private Animator animator;
 
     void Start()
@@ -42,8 +42,7 @@ public class Sword : MonoBehaviour, IWeapon
         if (col.tag == "Enemy")
         {
             // take the enemey, grab its reference/ component
-            col.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
-
+            col.GetComponent<IEnemy>().TakeDamage(CharacterStats.GetStat(BaseStat.BaseStatType.Attack).GetCalculatedStatValue());
         }
     }
 }
