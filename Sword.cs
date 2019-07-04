@@ -7,7 +7,7 @@ using UnityEngine;
 
  SOURCE: PROGRAMMING ANIMATION TO SWING THE SWORD THE WAY YOU WANT.
          https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=8&t=255s
-
+      
 */
 
 
@@ -36,13 +36,16 @@ public class Sword : MonoBehaviour, IWeapon
         animator.SetTrigger("Special_Attack");
     }
 
-    // Check when the collided object has entered collision. 
+    // Check when the collided object has entered collision.
+    // SOURCE: @34:17 https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=7
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Enemy")
         {
             // take the enemey, grab its reference/ component
-            col.GetComponent<IEnemy>().TakeDamage(CharacterStats.GetStat(BaseStat.BaseStatType.Attack).GetCalculatedStatValue());
+            //col.GetComponent<IEnemy>().TakeDamage(CharacterStats.GetStat(BaseStat.BaseStatType.Attack).GetCalculatedStatValue());
+
+            col.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
         }
     }
 }

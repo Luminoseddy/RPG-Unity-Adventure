@@ -5,18 +5,19 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Skelly : MonoBehaviour, IEnemy
-{
+{ 
+    public  LayerMask      aggroLayerMask;
 
-    public LayerMask aggroLayerMask;
-
-    private NavMeshAgent navAgent;
-    public float attack, strength, currentHealth, maxHealth;
+    private NavMeshAgent   navAgent;
     private CharacterStats characterStats;
-    private Collider[] withinAggroColliders;
+    private Player         player;
+    private Collider[]     withinAggroColliders;
 
+    public float attack, strength, maxHealth, currentHealth;
+    
     void Start()
     {
-        navAgent = GetComponent<NavMeshAgent>();
+        navAgent = GetComponent<NavMeshAgent>(); // Reference from navagent on the enemy
         characterStats = new CharacterStats(5, 10, 15);
         currentHealth = maxHealth;
     }
@@ -27,18 +28,13 @@ public class Skelly : MonoBehaviour, IEnemy
            decide if theres a collider its looking for inside the spehre or not.. Sphere == radius. */
         withinAggroColliders = Physics.OverlapSphere(transform.position, 10, aggroLayerMask);
 
-
         if (withinAggroColliders.Length > 0)
         {
-            Debug.Log("Player has been spotted");
+            ChasePlayer(withinAggroColliders[0].GetComponent<Player>());
+            Debug.Log("Player has been spotted. Get em!!");
         }
     }
      
-    public void PerformAttack()
-    {
-        throw new NotImplementedException();
-    }
-
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
@@ -48,8 +44,22 @@ public class Skelly : MonoBehaviour, IEnemy
         }
     }
 
+    // Source: @17:20 https://www.youtube.com/watch?v=Bs0rJEkYBvc&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=16
+    void ChasePlayer(Player player)
+    {
+        this.player = player;
+        navAgent.SetDestination(player.transform.position);
+    }
+
     void Die()
     {
         Destroy(gameObject);
+    }
+
+
+    public void PerformAttack()
+    {
+        player.TakeDamage(5);
+        throw new NotImplementedException();
     }
 }

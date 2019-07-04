@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     ================================================ */
     Vector3 forwardDirection,
             collisionPoint;
+
     Ray groundRay;
     RaycastHit groundHit;
 
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
         Start is called before the first frame update */
     void Start()
     {
+        this.healthBar.value = this.health;
         characterStats = new CharacterStats(10, 10, 10);
 
         playerRigidbody         = GetComponent<Rigidbody>();
@@ -166,7 +168,17 @@ public class Player : MonoBehaviour
         {
             health = 100;
         }
+    }
 
+    public void TakeDamage(int amount)
+    {
+        healthBar.value = health;
+        health -= amount;
+        if (health <= 0 || health >= 100)
+        {
+            Debug.Log("Never say diee.");
+            health = 100;
+        }
     }
 
     // ============================================================================================================================================
@@ -342,10 +354,6 @@ public class Player : MonoBehaviour
             playerMovementAnimation.SetBool("Stop_Idle", true);
             playerMovementAnimation.SetBool("Jumping", false);
         }
-
-
-
-
 
         // Backwards
         // Stop the animation when the key is unpressed

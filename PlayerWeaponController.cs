@@ -56,13 +56,11 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Update()
     {
-        // Testing to equip weapon
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PerformWeaponAttack();
         }
 
-        // Testing to equip weapon
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             PerformWeaponSpecialAttack();

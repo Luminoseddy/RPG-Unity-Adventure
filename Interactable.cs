@@ -8,8 +8,8 @@ public class Interactable : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent playerAgent;
 
-    private bool hasInteracted,
-                 isEnemy;
+    private bool hasInteracted, isEnemy;
+
 
     public virtual void CheckPlayerAndPlayerAgentCollision(NavMeshAgent playerAgent)
     {
