@@ -127,11 +127,10 @@ public class Player : MonoBehaviour
         METHODS
        ============================================================================================================================================
         Start is called before the first frame update */
-    void Start()
+    void Awake()
     {
         this.healthBar.value = this.health;
         characterStats = new CharacterStats(10, 10, 10);
-
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
@@ -162,7 +161,7 @@ public class Player : MonoBehaviour
     {
         healthBar.value = health;
 
-         health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
+        // health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
 
         if (health <= 0 || health >= 100)
         {
@@ -172,6 +171,8 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        Debug.Log("Player takes: " + amount + " damage");
+
         healthBar.value = health;
         health -= amount;
         if (health <= 0 || health >= 100)

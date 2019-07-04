@@ -16,6 +16,7 @@ using UnityEngine;
 public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 {
     public List<BaseStat> Stats { get; set; }
+    public int CurrentDamage { get; set; }
     public Transform ProjectileSpawn { get; set; }
     private Animator animator;
     Fireball fireball;
@@ -29,7 +30,7 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
         animator = GetComponent<Animator>();
     }
 
-    public void PerformAttack()
+    public void PerformAttack(int Damage)
     {
         //Debug.Log(this.name +"attack!");
         animator.SetTrigger("Base_Attack");

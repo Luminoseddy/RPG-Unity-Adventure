@@ -70,11 +70,31 @@ public class PlayerWeaponController : MonoBehaviour
     public void PerformWeaponAttack()
     {
         // Equip weapon when attack - PerformAttack() from Sword.cs class
-        equippedWeapon.PerformAttack();
+        equippedWeapon.PerformAttack(CalculateDamage());
     }
 
     public void PerformWeaponSpecialAttack()
     {
         equippedWeapon.PerformSpecialAttack();
+    }
+
+    private int CalculateDamage()
+    {
+        int damageToDeal = (characterStats.GetStat(BaseStat.BaseStatType.Strength).GetCalculatedStatValue() * 2) + Random.Range(2, 8);
+        damageToDeal += CalculateCritical(damageToDeal);
+
+        Debug.Log("Damage dealt: " + damageToDeal);
+        return damageToDeal;
+    }
+
+
+    private int CalculateCritical(int damage)
+    {
+        if(Random.value <= .10f) // .xx% critical hit chance.
+        {
+            int criticalDamage = (int)(damage * Random.Range(.25f, .5f));
+            return criticalDamage;
+        }
+        return 0;
     }
 }
