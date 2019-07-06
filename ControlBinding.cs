@@ -62,6 +62,7 @@ public class ControlBinding
 
     public bool GetControlBindingDown()
     {
+
         bool primaryPressed = false;
         bool secondaryPressed = false;
 
@@ -77,6 +78,7 @@ public class ControlBinding
             {
                 primaryPressed = true;
             }
+
         }
 
         // Secoondary 

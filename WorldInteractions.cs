@@ -12,7 +12,6 @@ public class WorldInteractions : MonoBehaviour
 
     public GameObject player;
     public GameObject npc;
-
     public float distance;
 
     [HideInInspector]
@@ -29,12 +28,11 @@ public class WorldInteractions : MonoBehaviour
         // https://www.youtube.com/watch?v=OMPV-duv25Q
 
         distance = Vector3.Distance(player.transform.position, npc.transform.position);
-
         if (distance <= 5 && Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             if(distance > 5)
             { 
-                // Debug.Log("You must get closer to speak with this NPC.");
+                Debug.Log("You must get closer to speak with this NPC.");
             }
             else
             {
@@ -50,22 +48,26 @@ public class WorldInteractions : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
-            // playerAgent.updateRotation = true; 
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
-            if (interactedObject.tag == "Enemy")
+            if (interactedObject.tag == "Interactable Object")
             {
-                // Debug.Log("Interactable Enemy Object Succes");
+                Debug.Log("Interactable Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
-            else if (interactedObject.tag == "Interactable Object")
+
+            else if (interactedObject.tag == "Item")
             {
-                // Debug.Log("Interactable Object Succes");
+                Debug.Log("Interactable ITEM Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
+
+
+
+
             else
             {
-                // Debug.Log("Not clicking interactables..");
+                Debug.Log("Not clicking interactables..");
                  //playerAgent.stoppingDistance = 0;
                  //playerAgent.destination = interactionInfo.point;           
             }
