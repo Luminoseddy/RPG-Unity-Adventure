@@ -12,7 +12,7 @@ MonoImporter:
   - bow: {instanceID: 0}
   - gun: {instanceID: 0}
   - bombPouch: {instanceID: 0}
-  executionOrder: 400
+  executionOrder: 0
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

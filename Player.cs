@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour 
+public class Player : MonoBehaviour
 {
  /* ============================================================================================================================================
     VARIABLES
     ============================================================================================================================================
-    COMPONENT REFERENCES 
+    COMPONENT REFERENCES
     ================================================ */
     [HideInInspector]
     public CameraController mainCamera;
@@ -22,16 +22,19 @@ public class Player : MonoBehaviour
                      fallDirection,
                      moveDirection;
 
-    /* PLAYER STATS 
+    /* PLAYER STATS
     ================================================ */
     public float health = 100;
     public Slider healthBar;
 
+<<<<<<< HEAD
     public CharacterStats characterStats;
 
+=======
 
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
 
-    /* VELOCITY 
+    /* VELOCITY
     ================================================ */
     Vector3 velocity;
     float gravity = -9,
@@ -39,19 +42,18 @@ public class Player : MonoBehaviour
           terminalVelocity = -25, // As you fall, you keep gaining speed. Limit the fall speed.
           fallMulti;
 
-    /* RUNNING 
+    /* RUNNING
     ================================================ */
     public float baseSpeed = 1,
-                 runSpeed = 4, 
+                 runSpeed = 4,
                  rotateSpeed = 1;
 
     float currentSpeed;
 
-    /* GROUND - SLOPES 
+    /* GROUND - SLOPES
     ================================================ */
     Vector3 forwardDirection,
             collisionPoint;
-
     Ray groundRay;
     RaycastHit groundHit;
 
@@ -62,7 +64,7 @@ public class Player : MonoBehaviour
           forwardMulti,
           strafeMulti;
 
-    /* INPUTS 
+    /* INPUTS
     ================================================ */
     bool run = true,
          jump ;
@@ -83,12 +85,12 @@ public class Player : MonoBehaviour
     public bool steer,
                 autoRun;
 
-  
+
     /* JUMPING
     ================================================ */
     private bool jumping = true; // by default: false
 
-    public float jumpSpeed, 
+    public float jumpSpeed,
                  jumpHeight = 4;
 
     Vector3 jumpDirection;
@@ -104,29 +106,34 @@ public class Player : MonoBehaviour
     [SerializeField] public Transform player;
     [SerializeField] private Transform respawnPoint;
 
+<<<<<<< HEAD
      //public GameObject bombPrefab; 
+=======
+     public GameObject bombPrefab;
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
 
     [Header("Visuals")]
     public GameObject model;
 
-    //[Header("Movement")]
-    //public float knockBackForce;
+    [Header("Movement")]
+    public float knockBackForce;
 
-    //[Header("Equipment")]
-    //public Sword sword; // class, variable
-    //public Bow bow;
-    //public Gun gun;
-    //public BombPouch bombPouch;
-    //public int arrowAmount = 0;
-    //public int bombAmount = 0;
-    //public int bulletAmount = 0;
-    //public float throwingSpeed; // Throwing bomb
-    //private float knockBackTimer;
+    [Header("Equipment")]
+    public Sword sword; // class, variable
+    public Bow bow;
+    public Gun gun;
+    public BombPouch bombPouch;
+    public int arrowAmount = 0;
+    public int bombAmount = 0;
+    public int bulletAmount = 0;
+    public float throwingSpeed; // Throwing bomb
+    private float knockBackTimer;
 
     /* ============================================================================================================================================
         METHODS
        ============================================================================================================================================
         Start is called before the first frame update */
+<<<<<<< HEAD
     void Awake()
     {
         this.healthBar.value = this.health;
@@ -134,6 +141,17 @@ public class Player : MonoBehaviour
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
+=======
+    void Start(){
+
+        playerRigidbody         = GetComponent<Rigidbody>();
+        controller              = GetComponent<CharacterController>();
+        playerMovementAnimation = GetComponent<Animator>();
+
+        //bow.gameObject.SetActive(false);
+        //sword.gameObject.SetActive(false);
+        //gun.gameObject.SetActive(false);
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
     }
 
     /* Update is called once per frame */
@@ -145,7 +163,7 @@ public class Player : MonoBehaviour
         //if (knockBackTimer > 0)
         //{
         //    knockBackTimer -= Time.deltaTime; // If user is in knockBack state, can't attack, hence can't processInput
-        //} 
+        //}
         //else {
         //    PlayerHealthBar();
         //    ProcessInput();
@@ -161,11 +179,16 @@ public class Player : MonoBehaviour
     {
         healthBar.value = health;
 
+<<<<<<< HEAD
         // health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
+=======
+        // health = health - (healthGainRate * Time.deltaTime); // Reduces health automatically as time passes.
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
 
         if (health <= 0 || health >= 100)
         {
             health = 100;
+<<<<<<< HEAD
         }
     }
 
@@ -180,12 +203,20 @@ public class Player : MonoBehaviour
             Debug.Log("Never say diee.");
             health = 100;
         }
+=======
+        }
+
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
     }
 
     // ============================================================================================================================================
     // Experience Bar Functionality
     // ============================================================================================================================================
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
 
 
         // Coming soon.....
@@ -270,7 +301,7 @@ public class Player : MonoBehaviour
         {
             velocityY = Mathf.Lerp(velocityY, terminalVelocity , 0.25f);
         }
-            
+
         /* APPLYING INPUTS */
         if (!jumping)
         {
@@ -316,8 +347,7 @@ public class Player : MonoBehaviour
 
         inputs.y = Axis(controls.forwards.GetControlBinding(), controls.backwards.GetControlBinding());
 
-        // WARNING when inputs.y != 0
-        if ( (inputs.y > 0 || inputs.y < 0) && !mainCamera.autoRunReset)
+        if (inputs.y != 0 && !mainCamera.autoRunReset)
         {
             autoRun = false;
         }
@@ -356,11 +386,14 @@ public class Player : MonoBehaviour
             playerMovementAnimation.SetBool("Jumping", false);
         }
 
+
+
+
+
         // Backwards
         // Stop the animation when the key is unpressed
         if (controls.backwards.GetControlBinding())
         {
-            currentSpeed = 2;
             //Animations
             playerMovementAnimation.SetBool("Walking_Backwards", true);
             playerMovementAnimation.SetBool("Walking_Forward", false);
@@ -372,7 +405,6 @@ public class Player : MonoBehaviour
         // Stop backward animation when key is unpressed.
         if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
         {
-            currentSpeed = 2;
             //Animations
             playerMovementAnimation.SetBool("Stop_Idle", true);
             playerMovementAnimation.SetBool("Walking_Forward", false);
@@ -407,7 +439,7 @@ public class Player : MonoBehaviour
         // BACKWARDS
         //if (controls.backwards.GetControlBinding())
         //{
-        //    if (controls.forwards.GetControlBinding()) 
+        //    if (controls.forwards.GetControlBinding())
         //    {
         //        //Animations
         //    }
@@ -515,7 +547,7 @@ public class Player : MonoBehaviour
                 playerMovementAnimation.SetBool("Charge", true);
                 playerMovementAnimation.SetBool("Jumping", false);
             }
-            else 
+            else
             {
                 //Animations
                 playerMovementAnimation.SetBool("Walking_Forward", true);
@@ -523,7 +555,7 @@ public class Player : MonoBehaviour
                 playerMovementAnimation.SetBool("Attack", false);
                 playerMovementAnimation.SetBool("Charge", false);
                 playerMovementAnimation.SetBool("Jumping", false);
-            }              
+            }
         }
 
         // ==============================================================================================================================
@@ -549,60 +581,65 @@ public class Player : MonoBehaviour
         // ==============================================================================================================================
         // PLAYER ATTACK CONTROLS
         // ==============================================================================================================================
-
-       
-
         if (Input.GetKeyDown("1")){
-
+            //gun.gameObject.SetActive(false);
+            //bow.gameObject.SetActive(false);
+            //sword.gameObject.SetActive(true);
+            //sword.Attack();
 
             //Animations
-            //playerMovementAnimation.SetBool("Attack", true);
-            //playerMovementAnimation.SetBool("Walking_Forward", false);
-            //playerMovementAnimation.SetBool("Stop_Idle", false);
-            //playerMovementAnimation.SetBool("Charge", false);
-            //playerMovementAnimation.SetBool("Jumping", false);
+            playerMovementAnimation.SetBool("Attack", true);
+            playerMovementAnimation.SetBool("Walking_Forward", false);
+            playerMovementAnimation.SetBool("Stop_Idle", false);
+            playerMovementAnimation.SetBool("Charge", false);
+            playerMovementAnimation.SetBool("Jumping", false);
         }
         if (Input.GetKeyUp("1"))
         {
+            //gun.gameObject.SetActive(false);
+            //bow.gameObject.SetActive(false);
+            //sword.gameObject.SetActive(true);
+            //sword.Attack();
 
             //Animations
-            //playerMovementAnimation.SetBool("Walking_Forward", false);
-            //playerMovementAnimation.SetBool("Stop_Idle", true);
-            //playerMovementAnimation.SetBool("Attack", false);
-            //playerMovementAnimation.SetBool("Charge", false);
-            //playerMovementAnimation.SetBool("Jumping", false);
+            //Animations
+            playerMovementAnimation.SetBool("Walking_Forward", false);
+            playerMovementAnimation.SetBool("Stop_Idle", true);
+            playerMovementAnimation.SetBool("Attack", false);
+            playerMovementAnimation.SetBool("Charge", false);
+            playerMovementAnimation.SetBool("Jumping", false);
         }
 
 
 
-        //if (Input.GetKeyDown("x")) { 
-        //    if (arrowAmount > 0){
-        //        sword.gameObject.SetActive(false); 
-        //        gun.gameObject.SetActive(false);
-        //        bow.gameObject.SetActive(true);
-        //        bow.Attack();
-        //        arrowAmount--;
-        //        if (arrowAmount == 0) { arrowAmount = 99; } 
-        //    }
-        //}
-        //if (Input.GetKeyDown("v")) {
-        //    ThrowBomb();
-        //    bombAmount--;
-        //    if (bombAmount == 0) { bombAmount = 99; }
-        //}
-        //if (Input.GetKeyDown("z")) // Gun
-        //{
-        //    if (bulletAmount > 0)
-        //    {
-        //        sword.gameObject.SetActive(false);
-        //        bow.gameObject.SetActive(false);
-        //        gun.gameObject.SetActive(true);
-        //        gun.Attack();
-        //        bulletAmount--;
+        if (Input.GetKeyDown("x")) {
+            if (arrowAmount > 0){
+                sword.gameObject.SetActive(false);
+                gun.gameObject.SetActive(false);
+                bow.gameObject.SetActive(true);
+                bow.Attack();
+                arrowAmount--;
+                if (arrowAmount == 0) { arrowAmount = 99; }
+            }
+        }
+        if (Input.GetKeyDown("v")) {
+            ThrowBomb();
+            bombAmount--;
+            if (bombAmount == 0) { bombAmount = 99; }
+        }
+        if (Input.GetKeyDown("z")) // Gun
+        {
+            if (bulletAmount > 0)
+            {
+                sword.gameObject.SetActive(false);
+                bow.gameObject.SetActive(false);
+                gun.gameObject.SetActive(true);
+                gun.Attack();
+                bulletAmount--;
 
-        //        if (bulletAmount == 0) { bulletAmount = 99; }
-        //    }
-        //}
+                if (bulletAmount == 0) { bulletAmount = 99; }
+            }
+        }
     }
 
     void Jump()
@@ -617,13 +654,13 @@ public class Player : MonoBehaviour
         velocityY = Mathf.Sqrt(-gravity * jumpHeight); // sqrt can't be negative, gravity turns positive from 2x negative.
     }
 
-    //private void ThrowBomb()
-    //{
-    //    if (bombAmount <= 0)
-    //    { return; }
+    private void ThrowBomb()
+    {
+        if (bombAmount <= 0)
+        { return; }
 
-    //    bombPouch.Attack();
-    //}
+        bombPouch.Attack();
+    }
 
     // ==============================================================================================================================
     // PLAYER ANGLE ADJUSTMENTS
@@ -678,7 +715,7 @@ public class Player : MonoBehaviour
         strafeMulti = 1;
 
         if (Physics.Raycast(groundRay, out groundHit, 0.3f))
-        { 
+        {
             // Getting angles
             slopeAngle = Vector3.Angle(transform.up, groundHit.normal) ;
             directionAngle = Vector3.Angle(moveDirection.forward, groundHit.normal) - 90;
@@ -686,7 +723,7 @@ public class Player : MonoBehaviour
             if (directionAngle < 0 && slopeAngle <= controller.slopeLimit)
             {
                 forwardAngle = Vector3.Angle(transform.forward, groundHit.normal) - 90; // Checking forward angles against the slope
-                forwardMulti = 1 / Mathf.Cos(forwardAngle * Mathf.Deg2Rad);             // Applying forward movement multiplier based on the forwardAngle   
+                forwardMulti = 1 / Mathf.Cos(forwardAngle * Mathf.Deg2Rad);             // Applying forward movement multiplier based on the forwardAngle
                 groundDirection.eulerAngles += new Vector3(-forwardAngle, 0, 0);        // Rotate groundDirection X
 
                 strafeAngle = Vector3.Angle(groundDirection.right, groundHit.normal) - 90;   // Checking strafe angle against the slope
@@ -717,35 +754,53 @@ public class Player : MonoBehaviour
         // collisionPoint = collisionPoint.normalized; // Normalize it if needed.
     }
 
-    //void OnTriggerEnter (Collider otherCollider){
-    //    if (otherCollider.GetComponent<EnemyBullet> () != null){
-    //        Hit((transform.position - otherCollider.transform.position).normalized); // When inside we need to direct the arrow
-    //        Destroy(otherCollider.gameObject); // When player gets hit reduce health
-    //    }
-    //    Debug.Log(otherCollider.name);
-    //} 
+    void OnTriggerEnter (Collider otherCollider){
+        if (otherCollider.GetComponent<EnemyBullet> () != null){
+            Hit((transform.position - otherCollider.transform.position).normalized); // When inside we need to direct the arrow
+            Destroy(otherCollider.gameObject); // When player gets hit reduce health
+        }
+        Debug.Log(otherCollider.name);
+    }
 
-    //We need the hit direction using Vector3 direction: This happens when player gets hit
-    //private void Hit(Vector3 direction){
-    //    // Apply force/KnockBack on player to move back when hit
-    //    Vector3 knockBackDirection = (direction + Vector3.up).normalized;
-    //    playerRigidbody.AddForce(knockBackDirection * knockBackForce);
-    //    knockBackTimer = 0.2f; // x seconds in the knockBack state
-    //}
+     //We need the hit direction using Vector3 direction: This happens when player gets hit
+    private void Hit(Vector3 direction){
+        // Apply force/KnockBack on player to move back when hit
+        Vector3 knockBackDirection = (direction + Vector3.up).normalized;
+        playerRigidbody.AddForce(knockBackDirection * knockBackForce);
+        knockBackTimer = 0.2f; // x seconds in the knockBack state
+
+    }
 
     void Debugger()
     {
         Vector3 lineStart = transform.position + Vector3.up * 0.05f;
 
-        if (showMoveDirection)    { Debug.DrawLine(lineStart, lineStart + moveDirection.forward * 0.5f, Color.cyan); }
-      
-        if (showForwardDirection) { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.blue); }
-      
-        if (showStrafeDirection)  { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.red); }
+        if (showMoveDirection)
+        {
 
-        if (showFallNormal)       { Debug.DrawLine(lineStart, lineStart + fallDirection.up * 0.5f, Color.green); }
-       
+            Debug.DrawLine(lineStart, lineStart + moveDirection.forward * 0.5f, Color.cyan);
+        }
+
+        if (showForwardDirection)
+        {
+
+            Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.blue);
+        }
+
+        if (showStrafeDirection)
+        {
+
+            Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.red);
+        }
+
+        if (showFallNormal)
+        {
+
+            Debug.DrawLine(lineStart, lineStart + fallDirection.up * 0.5f, Color.green);
+        }
+
         groundDirection.GetChild(0).gameObject.SetActive(showForwardDirection);
         fallDirection.GetChild(0).gameObject.SetActive(showFallNormal);
     }
+
 }

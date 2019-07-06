@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 
@@ -10,6 +8,7 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
+<<<<<<< HEAD
     public enum BaseStatType { Attack, Strength, AttackSpeed }
 
     public List<StatBonus> BaseAdditives { get; set; }
@@ -20,6 +19,14 @@ public class BaseStat : MonoBehaviour
     public string StatName        { get; set;  } // Display in character sheet in game
     public string StatDescription { get; set; }
     public int FinalValue         { get; set; }
+=======
+    public List<StatBonus> BaseAdditives { get; set; }
+
+    public int BaseValue { get; set; } // Default stats with no armor, no nothing.
+    public string StatName { get; set;  } // Display in character sheet in game
+    public string StatDescription { get; set; }
+    public int FinalValue { get; set; }
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
 
 
     public BaseStat(int baseValue, string statName, string statDescription)
@@ -30,6 +37,7 @@ public class BaseStat : MonoBehaviour
         this.StatDescription = statDescription;
     }
 
+<<<<<<< HEAD
     [Newtonsoft.Json.JsonConstructor]
     public BaseStat(BaseStatType statType, int baseValue, string statName)
     {
@@ -39,6 +47,8 @@ public class BaseStat : MonoBehaviour
         this.StatName = statName;
     }
 
+=======
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
     public void AddStatBonus(StatBonus statBonus)
     {
         this.BaseAdditives.Add(statBonus);
@@ -58,4 +68,5 @@ public class BaseStat : MonoBehaviour
         FinalValue += BaseValue;
         return FinalValue;
     }
+
 }

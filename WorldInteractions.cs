@@ -12,7 +12,6 @@ public class WorldInteractions : MonoBehaviour
 
     public GameObject player;
     public GameObject npc;
-
     public float distance;
 
     [HideInInspector]
@@ -29,7 +28,6 @@ public class WorldInteractions : MonoBehaviour
         // https://www.youtube.com/watch?v=OMPV-duv25Q
 
         distance = Vector3.Distance(player.transform.position, npc.transform.position);
-
         if (distance <= 5 && Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             if(distance > 5)
@@ -50,11 +48,11 @@ public class WorldInteractions : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
-            // playerAgent.updateRotation = true; 
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
-            if (interactedObject.tag == "Enemy")
+            if (interactedObject.tag == "Interactable Object")
             {
+<<<<<<< HEAD
                 Debug.Log("Interactable Enemy Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
@@ -62,7 +60,21 @@ public class WorldInteractions : MonoBehaviour
             {
                 Debug.Log("Interactable Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
+=======
+                Debug.Log("Interactable Object Succes");
+                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
+
+            else if (interactedObject.tag == "Item")
+            {
+                Debug.Log("Interactable ITEM Succes");
+                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
+>>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+            }
+
+
+
+
             else
             {
                 Debug.Log("Not clicking interactables..");

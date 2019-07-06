@@ -41,13 +41,12 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter(Collider otherCollider)
     {     
-        //if (otherCollider.GetComponent<Sword>() != null){
-            //if (otherCollider.GetComponent<Sword>().IsAttacking) { // Make sure its being attacked: True for enemy to take a hit.. Must swing sword for enemy to take hit
-            //    ModifyHealth(-10);
-            //    Hit();
-            //}
-        //}
-        if (otherCollider.GetComponent<Arrow>()!= null){
+        if (otherCollider.GetComponent<Sword>() != null){
+            if (otherCollider.GetComponent<Sword>().IsAttacking) { // Make sure its being attacked: True for enemy to take a hit.. Must swing sword for enemy to take hit
+                ModifyHealth(-10);
+                Hit();
+            }
+        }else if (otherCollider.GetComponent<Arrow>()!= null){
             ModifyHealth(-10);
             Hit();
             Destroy(otherCollider.gameObject);
