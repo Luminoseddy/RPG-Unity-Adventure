@@ -30,9 +30,12 @@ public class Player : MonoBehaviour
 <<<<<<< HEAD
     public CharacterStats characterStats;
 
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+>>>>>>> parent of 0b75d73... New player UI.
 
     /* VELOCITY
     ================================================ */
@@ -107,6 +110,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform respawnPoint;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 0b75d73... New player UI.
      //public GameObject bombPrefab; 
 =======
      public GameObject bombPrefab;
@@ -134,6 +140,9 @@ public class Player : MonoBehaviour
        ============================================================================================================================================
         Start is called before the first frame update */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 0b75d73... New player UI.
     void Awake()
     {
         this.healthBar.value = this.health;
@@ -141,6 +150,7 @@ public class Player : MonoBehaviour
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
+<<<<<<< HEAD
 =======
     void Start(){
 
@@ -152,6 +162,8 @@ public class Player : MonoBehaviour
         //sword.gameObject.SetActive(false);
         //gun.gameObject.SetActive(false);
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+>>>>>>> parent of 0b75d73... New player UI.
     }
 
     /* Update is called once per frame */
@@ -180,10 +192,14 @@ public class Player : MonoBehaviour
         healthBar.value = health;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         // health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
 =======
         // health = health - (healthGainRate * Time.deltaTime); // Reduces health automatically as time passes.
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+        // health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
+>>>>>>> parent of 0b75d73... New player UI.
 
         if (health <= 0 || health >= 100)
         {
@@ -203,20 +219,27 @@ public class Player : MonoBehaviour
             Debug.Log("Never say diee.");
             health = 100;
         }
+<<<<<<< HEAD
 =======
         }
 
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+>>>>>>> parent of 0b75d73... New player UI.
     }
 
     // ============================================================================================================================================
     // Experience Bar Functionality
     // ============================================================================================================================================
 <<<<<<< HEAD
+<<<<<<< HEAD
    
 =======
 
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+   
+>>>>>>> parent of 0b75d73... New player UI.
 
 
         // Coming soon.....

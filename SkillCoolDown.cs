@@ -21,10 +21,13 @@ public class SkillCoolDown : MonoBehaviour
 
         // distance = Vector3.Distance(player.transform.position, attackSlot.transform.position);
 
+<<<<<<< HEAD
 =======
     public void FixedUpdate()
     {
 >>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
+=======
+>>>>>>> parent of 0b75d73... New player UI.
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(skills[0].currentCoolDown >= skills[0].coolDown)

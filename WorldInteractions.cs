@@ -53,15 +53,21 @@ public class WorldInteractions : MonoBehaviour
             if (interactedObject.tag == "Interactable Object")
             {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 0b75d73... New player UI.
                 Debug.Log("Interactable Enemy Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
             else if (interactedObject.tag == "Interactable Object")
             {
                 Debug.Log("Interactable Object Succes");
+<<<<<<< HEAD
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
 =======
                 Debug.Log("Interactable Object Succes");
+=======
+>>>>>>> parent of 0b75d73... New player UI.
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
 

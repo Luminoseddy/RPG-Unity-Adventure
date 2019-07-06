@@ -9,6 +9,9 @@ public class CharacterStats : MonoBehaviour
 {
     public List<BaseStat> stats = new List<BaseStat>();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 0b75d73... New player UI.
 
     // Constructor that search for the values of stats to know whats bering assigned to what stat
     public CharacterStats(int attack, int strength, int attackSpeed)
