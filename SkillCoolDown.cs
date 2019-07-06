@@ -14,14 +14,12 @@ public class SkillCoolDown : MonoBehaviour
 
     public GameObject attackSlot;
     public GameObject player;
-    public float distance;
-    public bool curserOnAttackSlot;
+    public float      distance;
+    public bool       curserOnAttackSlot;
 
     public void FixedUpdate()
     {
-
         // distance = Vector3.Distance(player.transform.position, attackSlot.transform.position);
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(skills[0].currentCoolDown >= skills[0].coolDown)

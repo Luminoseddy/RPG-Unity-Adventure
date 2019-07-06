@@ -49,6 +49,6 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact()
     {
-        Debug.Log("Interaction using base class, complete.");
+        // Debug.Log("Interaction using base class, complete.");
     }
 }

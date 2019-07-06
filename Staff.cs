@@ -15,17 +15,15 @@ using UnityEngine;
 
 public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 {
-    public List<BaseStat> Stats { get; set; }
-    public int CurrentDamage { get; set; }
+    public List<BaseStat> Stats      { get; set; }
+    public int CurrentDamage         { get; set; }
     public Transform ProjectileSpawn { get; set; }
     private Animator animator;
     Fireball fireball;
 
-   
     void Start()
     {
         fireball = Resources.Load<Fireball>("Weapons/Projectiles/Fireball");
-
         // Use as reference to the object. Use this to trigger animation upon Attack
         animator = GetComponent<Animator>();
     }
@@ -33,8 +31,7 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
     public void PerformAttack(int Damage)
     {
         //Debug.Log(this.name +"attack!");
-        animator.SetTrigger("Base_Attack");
-        //animator.SetTrigger("Base_Attack");
+        animator.SetTrigger("Base_Attack");       
     }
 
     public void PerformSpecialAttack()

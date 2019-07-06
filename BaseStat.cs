@@ -11,16 +11,14 @@ using UnityEngine;
 public class BaseStat : MonoBehaviour
 {
     public enum BaseStatType { Attack, Strength, AttackSpeed }
-
     public List<StatBonus> BaseAdditives { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public BaseStatType StatType;
-    public int BaseValue          { get; set; } // Default stats with no armor, no nothing.
-    public string StatName        { get; set;  } // Display in character sheet in game
+    public int    BaseValue       { get; set; } // Default stats with no armor, no nothing.
+    public string StatName        { get; set; } // Display in character sheet in game
     public string StatDescription { get; set; }
-    public int FinalValue         { get; set; }
-
+    public int    FinalValue      { get; set; }
 
     public BaseStat(int baseValue, string statName, string statDescription)
     {
@@ -39,6 +37,7 @@ public class BaseStat : MonoBehaviour
         this.StatName = statName;
     }
 
+    // Adds stats when any weapon is equipped
     public void AddStatBonus(StatBonus statBonus)
     {
         this.BaseAdditives.Add(statBonus);

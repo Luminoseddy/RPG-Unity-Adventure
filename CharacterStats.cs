@@ -7,7 +7,6 @@ using UnityEngine;
 public class CharacterStats
 {
     public List<BaseStat> stats = new List<BaseStat>();
-
     // Constructor that search for the values of stats to know whats bering assigned to what stat
     public CharacterStats(int attack, int strength, int attackSpeed)
     {
@@ -31,7 +30,6 @@ public class CharacterStats
         return this.stats.Find(x => x.StatType == stat); 
     }
 
-
     // When equipping weapon this add the stats to the player.
     // Allows you to pass a list of different stats for you in 1 go. att, def, str etc.
     public void AddStatsBonus(List<BaseStat> statBonuses)
@@ -48,10 +46,8 @@ public class CharacterStats
     public void RemoveStatsBonus(List<BaseStat> statBonuses)
     {
         foreach (BaseStat statBonus in statBonuses)
-        {
-            //stats.Find(x => x.StatName == statBonus.StatName).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
+        { 
             GetStat(statBonus.StatType).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
         }
     }
-
 }

@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/* Source: https://www.youtube.com/watch?v=7T4dFqT62Js&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=6
-
+/* SOURCE: https://www.youtube.com/watch?v=7T4dFqT62Js&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=6
    SOURCE: PROGRAMMING ANIMATION TO SWING THE SWORD THE WAY YOU WANT.
            https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=8&t=255s     */
 
 
 public class Sword : MonoBehaviour, IWeapon
 {
-    public List<BaseStat> Stats { get; set; }
+    public List<BaseStat> Stats          { get; set; }
     public CharacterStats CharacterStats { get; set; }
-    public int CurrentDamage { get; set; }
+    public int CurrentDamage             { get; set; }
 
     private Animator animator;
     private int currentDamage;
@@ -48,8 +47,6 @@ public class Sword : MonoBehaviour, IWeapon
             col.GetComponent<IEnemy>().TakeDamage(CurrentDamage);
         }
     }
-
-   
 }
 
 
