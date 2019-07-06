@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerHealsZone : MonoBehaviour 
 {
     public bool isHealing; // Is it healing? False.
-    public float heal = 10;
+    public int heal = 10;
     public Player player;
 
     public void OnTriggerStay(Collider collider)
@@ -18,6 +18,7 @@ public class TriggerHealsZone : MonoBehaviour
                 // col.SendMessage("Healing", Time.deltaTime * heal);
                 player.health = player.health + (heal * Time.deltaTime);
             }
+            UIEventHandler.HealthChanged((int)player.health);
         }
     }
 }

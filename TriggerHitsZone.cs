@@ -17,7 +17,8 @@ public class TriggerHitsZone : MonoBehaviour
                 // Take away hitpoints
                 // col.SendMessage("Taking Damage", Time.deltaTime * damage);
                 player.health = player.health - (damage * Time.deltaTime);
-            }       
+            }
+            UIEventHandler.HealthChanged((int)player.health);
         }
     }
 }

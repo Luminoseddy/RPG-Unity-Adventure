@@ -12,13 +12,13 @@ public class PlayerWeaponController : MonoBehaviour
     public GameObject EquippedWeapon { get; set; }
 
     Transform spawnProjectile;
+    Item currentlyEquippedItem;
     CharacterStats characterStats;
     IWeapon equippedWeapon;
 
     void Start()
     {
         spawnProjectile = transform.Find("ProjectileSpawn");
-
         characterStats = GetComponent<Player>().characterStats;
     }
 
@@ -27,15 +27,13 @@ public class PlayerWeaponController : MonoBehaviour
         // This is where we destroy the item in the players hand. to swap/remove weapons.
         if(EquippedWeapon != null) 
         {
+            InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);
             characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
-
-
         // Casting gameobject 
         // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
-
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 
         // Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped.
@@ -43,28 +41,26 @@ public class PlayerWeaponController : MonoBehaviour
         {
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
         }
-        
-        equippedWeapon.Stats = itemToEquip.Stats;
 
         // Setting Parent to parent it to playersHand (changes Parents) and becomes parented to players hand.
         EquippedWeapon.transform.SetParent(playerHand.transform);
-
+        equippedWeapon.Stats = itemToEquip.Stats;
+        currentlyEquippedItem = itemToEquip;
         characterStats.AddStatsBonus(itemToEquip.Stats);
-
-        Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
+        // Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
+        // UIEventHandler.ItemEquipped(itemToEquip); // Current item trying to equip gets passed to the UI: DEBUGG
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            PerformWeaponAttack();
-        }
-
+		{
+			PerformWeaponAttack();
+		}
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            PerformWeaponSpecialAttack();
-        }
+		{
+			PerformWeaponSpecialAttack();
+		}
     }
 
     public void PerformWeaponAttack()
@@ -86,7 +82,6 @@ public class PlayerWeaponController : MonoBehaviour
         Debug.Log("Damage dealt: " + damageToDeal);
         return damageToDeal;
     }
-
 
     private int CalculateCritical(int damage)
     {

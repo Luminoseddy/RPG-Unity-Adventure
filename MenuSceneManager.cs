@@ -9,6 +9,6 @@ public class MenuSceneManager : MonoBehaviour
     // without public, its default is private.
     public void OnStart()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Homebase");
     }
 }

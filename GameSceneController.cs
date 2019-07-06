@@ -28,9 +28,9 @@ public class GameSceneController : MonoBehaviour
         // determine the health is only updated if the player exist
         if (player != null){
 
-            bombText.text = "Bombs: " + player.bombAmount;
-            arrowText.text = "Arrows: " + player.arrowAmount;
-            bulletText.text = "Ammu: " + player.bulletAmount;
+            //bombText.text = "Bombs: " + player.bombAmount;
+            //arrowText.text = "Arrows: " + player.arrowAmount;
+            //bulletText.text = "Ammu: " + player.bulletAmount;
             // experienceText.text = "Exp: " + player.experienceAmount;
 
             // Passes through the index of hearts
