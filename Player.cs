@@ -101,6 +101,9 @@ public class Player : MonoBehaviour
                 showForwardDirection,
                 showStrafeDirection;
 
+    [SerializeField] public Transform player;
+    [SerializeField] private Transform respawnPoint;
+
      //public GameObject bombPrefab; 
 
     [Header("Visuals")]
@@ -124,16 +127,13 @@ public class Player : MonoBehaviour
         METHODS
        ============================================================================================================================================
         Start is called before the first frame update */
-    void Start()
+    void Awake()
     {
         this.healthBar.value = this.health;
-
         characterStats = new CharacterStats(10, 10, 10);
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
-
-		UIEventHandler.HealthChanged((int)health);
     }
 
     /* Update is called once per frame */
@@ -161,14 +161,13 @@ public class Player : MonoBehaviour
     {
         healthBar.value = health;
 
-        health += (0.5f * Time.deltaTime); // Alternates health automatically as time passes.
+        // health += (0.5f * Time.deltaTime); // Reduces health automatically as time passes.
 
         if (health <= 0 || health >= 100)
         {
             health = 100;
         }
-		UIEventHandler.HealthChanged((int)health);
-	}
+    }
 
     public void TakeDamage(int amount)
     {
@@ -178,20 +177,18 @@ public class Player : MonoBehaviour
         health -= amount;
         if (health <= 0 || health >= 100)
         {
-            Debug.Log("Rehealed!");
+            Debug.Log("Never say diee.");
             health = 100;
         }
-		UIEventHandler.HealthChanged((int)health); // Updates the UI from damage taken 
     }
-
 
     // ============================================================================================================================================
     // Experience Bar Functionality
     // ============================================================================================================================================
+   
 
 
-
-    // Coming soon.....
+        // Coming soon.....
 
 
 

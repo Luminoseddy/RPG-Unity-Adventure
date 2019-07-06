@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-// @21:30 https://www.youtube.com/watch?v=hyh3kKGvJQw
+// @22:00 https://www.youtube.com/watch?v=hyh3kKGvJQw
 
 public class Fireball : MonoBehaviour
 {

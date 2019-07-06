@@ -50,18 +50,20 @@ public class Skelly : MonoBehaviour, IEnemy
     {
         // Ensures the enemy can't attack unless close to you.
         navAgent.SetDestination(player.transform.position);
-        this.player = player;  
+
+        this.player = player;
+        
         if (navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
             if (!IsInvoking("PerformAttack"))
             {
                 // Invoke itself automatically, starting time attack is .5f.  when it gets close, then every 2 seconds hit.
-                InvokeRepeating("PerformAttack", .5f, 1f);
+                InvokeRepeating("PerformAttack", .5f, 2f);
             }   
         }
         else
         {
-            // Debug.Log("Not within distance");
+            Debug.Log("Not within distance");
             CancelInvoke("PerformAttack");
         }
     }
@@ -70,6 +72,7 @@ public class Skelly : MonoBehaviour, IEnemy
     {
         Destroy(gameObject);
     }
+
 
     public void PerformAttack()
     {
