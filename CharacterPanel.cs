@@ -16,7 +16,7 @@ public class CharacterPanel : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
         // Set up the listener

@@ -31,8 +31,10 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
     public void PerformAttack(int Damage)
     {
         //Debug.Log(this.name +"attack!");
-        animator.SetTrigger("Base_Attack");       
+        animator.SetTrigger("Base_Attack");
     }
+
+
 
     public void PerformSpecialAttack()
     {

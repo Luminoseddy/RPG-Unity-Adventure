@@ -19,7 +19,7 @@ public class InventoryUIItem : MonoBehaviour
     {
 
         // Item_Name, the UI element we're in search for. 
-        //this.transform.Find("Item_Name").GetComponent<Text>().text = item.ItemName;
+        // this.transform.Find("Item_Name").GetComponent<Text>().text = item.ItemName;
         itemText.text = item.ItemName;
 
         // Grab sprite property of image component
@@ -29,7 +29,7 @@ public class InventoryUIItem : MonoBehaviour
     public void OnSelectItemButton()
     {
         // Go through the inventory controeller.
-        Debug.Log("Clicking object inside inventory. Passed.");
+        // Debug.Log("Clicking object inside inventory. Passed.");
         InventoryController.Instance.SetItemDetails(item, GetComponent<Button>());
     }
 }

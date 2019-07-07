@@ -25,15 +25,15 @@ public class InventoryUIDetails : MonoBehaviour
         gameObject.SetActive(true);
 
         statText.text = ""; // Empty the string when adding data so that they don't concatenate.
-
         // Source@6:30 https://www.youtube.com/watch?v=MECFk-6euQ0&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=13
         if (item.Stats != null)
         {
-            foreach(BaseStat stat in item.Stats)
+            foreach (BaseStat stat in item.Stats)
             {
                 statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
-            }     
+            }
         }
+
         // test
         itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
@@ -48,7 +48,7 @@ public class InventoryUIDetails : MonoBehaviour
 
     public void OnItemInteract()
     {
-        Debug.Log("Testing on item interact: " + item.ItemType.ToString());
+        // Debug.Log("Testing on item interact: " + item.ItemType.ToString());
 
         if(item.ItemType == Item.ItemTypes.Consumable) // Consumable ItemTypes value.
         {
@@ -62,6 +62,6 @@ public class InventoryUIDetails : MonoBehaviour
         }
 
         item = null; // Null out the item once its used
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); // deactivate panelk when using item
     }
 }

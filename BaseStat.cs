@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using UnityEngine;
 
 
@@ -8,31 +10,16 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
-<<<<<<< HEAD
     public enum BaseStatType { Attack, Strength, AttackSpeed }
-
     public List<StatBonus> BaseAdditives { get; set; }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public BaseStatType StatType;
-    public int BaseValue          { get; set; } // Default stats with no armor, no nothing.
-    public string StatName        { get; set;  } // Display in character sheet in game
-<<<<<<< HEAD
-    public string StatDescription { get; set; }
-    public int FinalValue         { get; set; }
-=======
-    public List<StatBonus> BaseAdditives { get; set; }
 
-    public int BaseValue { get; set; } // Default stats with no armor, no nothing.
-    public string StatName { get; set;  } // Display in character sheet in game
+    public int    BaseValue       { get; set; } // Default stats with no armor, no nothing.
+    public string StatName        { get; set; } // Display in character sheet in game
     public string StatDescription { get; set; }
-    public int FinalValue { get; set; }
->>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
-=======
-    public string StatDescription { get; set; }
-    public int FinalValue         { get; set; }
->>>>>>> parent of 0b75d73... New player UI.
-
+    public int    FinalValue      { get; set; }
 
     public BaseStat(int baseValue, string statName, string statDescription)
     {
@@ -42,7 +29,6 @@ public class BaseStat : MonoBehaviour
         this.StatDescription = statDescription;
     }
 
-<<<<<<< HEAD
     [Newtonsoft.Json.JsonConstructor]
     public BaseStat(BaseStatType statType, int baseValue, string statName)
     {
@@ -52,11 +38,7 @@ public class BaseStat : MonoBehaviour
         this.StatName = statName;
     }
 
-<<<<<<< HEAD
-=======
->>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
-=======
->>>>>>> parent of 0b75d73... New player UI.
+    // Adds stats when any weapon is equipped
     public void AddStatBonus(StatBonus statBonus)
     {
         this.BaseAdditives.Add(statBonus);
@@ -76,5 +58,4 @@ public class BaseStat : MonoBehaviour
         FinalValue += BaseValue;
         return FinalValue;
     }
-
 }

@@ -14,7 +14,6 @@ public class Fireball : MonoBehaviour
     public  int     Damage    { get; set; }
 
     
-
     private void Start()
     {
         Range = 20f;

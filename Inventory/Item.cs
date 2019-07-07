@@ -9,6 +9,9 @@ public class Item
      * This is used inside the JSON File.  */
 
     public enum ItemTypes { Consumable, Weapon, Quest }
+
+    [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public ItemTypes ItemType   { get; set; }
     public List<BaseStat> Stats { get; set; }
     public string ObjectSlug    { get; set; }
     public string Description   { get; set; }
@@ -16,8 +19,7 @@ public class Item
     public string ItemName      { get; set; }
     public bool ItemModifier    { get; set; }
 
-    [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public ItemTypes ItemType   { get; set; }
+
     
     // Constructor
     public Item(List<BaseStat> _Stats, string _ObjectSlug)

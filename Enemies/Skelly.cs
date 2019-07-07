@@ -22,7 +22,7 @@ public class Skelly : MonoBehaviour, IEnemy
         currentHealth = maxHealth;
     }
 
-    void FixedUpdate()
+    void FixedUpdate() // Maxes at 50fps
     {
         /* Send out imaginated sphere that exist aroudn every frame around the enemy to
            decide if theres a collider its looking for inside the spehre or not.. Sphere == radius.
@@ -56,7 +56,7 @@ public class Skelly : MonoBehaviour, IEnemy
             if (!IsInvoking("PerformAttack"))
             {
                 // Invoke itself automatically, starting time attack is .5f.  when it gets close, then every 2 seconds hit.
-                InvokeRepeating("PerformAttack", .5f, 1f);
+                InvokeRepeating("PerformAttack", 0.0f, 1f);
             }   
         }
         else

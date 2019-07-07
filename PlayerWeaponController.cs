@@ -41,7 +41,6 @@ public class PlayerWeaponController : MonoBehaviour
         {
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
         }
-
         // Setting Parent to parent it to playersHand (changes Parents) and becomes parented to players hand.
         EquippedWeapon.transform.SetParent(playerHand.transform);
         equippedWeapon.Stats = itemToEquip.Stats;
@@ -67,6 +66,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         // Equip weapon when attack - PerformAttack() from Sword.cs class
         equippedWeapon.PerformAttack(CalculateDamage());
+        
     }
 
     public void PerformWeaponSpecialAttack()
@@ -85,7 +85,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     private int CalculateCritical(int damage)
     {
-        if(Random.value <= .10f) // .xx% critical hit chance.
+        if (Random.value <= .10f) // .xx% critical hit chance.
         {
             int criticalDamage = (int)(damage * Random.Range(.25f, .5f));
             return criticalDamage;

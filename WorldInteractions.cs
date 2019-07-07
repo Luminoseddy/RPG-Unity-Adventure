@@ -12,6 +12,7 @@ public class WorldInteractions : MonoBehaviour
 
     public GameObject player;
     public GameObject npc;
+
     public float distance;
 
     [HideInInspector]
@@ -28,11 +29,12 @@ public class WorldInteractions : MonoBehaviour
         // https://www.youtube.com/watch?v=OMPV-duv25Q
 
         distance = Vector3.Distance(player.transform.position, npc.transform.position);
+
         if (distance <= 5 && Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             if(distance > 5)
             { 
-                Debug.Log("You must get closer to speak with this NPC.");
+                // Debug.Log("You must get closer to speak with this NPC.");
             }
             else
             {
@@ -48,42 +50,22 @@ public class WorldInteractions : MonoBehaviour
 
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
+            // playerAgent.updateRotation = true; 
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
-            if (interactedObject.tag == "Interactable Object")
+            if (interactedObject.tag == "Enemy")
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 0b75d73... New player UI.
-                Debug.Log("Interactable Enemy Object Succes");
+                // Debug.Log("Interactable Enemy Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
             else if (interactedObject.tag == "Interactable Object")
             {
-                Debug.Log("Interactable Object Succes");
-<<<<<<< HEAD
-                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
-=======
-                Debug.Log("Interactable Object Succes");
-=======
->>>>>>> parent of 0b75d73... New player UI.
+                // Debug.Log("Interactable Object Succes");
                 interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
             }
-
-            else if (interactedObject.tag == "Item")
-            {
-                Debug.Log("Interactable ITEM Succes");
-                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
->>>>>>> 5a8051cc53a55e60c9f35c3335255105807662f7
-            }
-
-
-
-
             else
             {
-                Debug.Log("Not clicking interactables..");
+                // Debug.Log("Not clicking interactables..");
                  //playerAgent.stoppingDistance = 0;
                  //playerAgent.destination = interactionInfo.point;           
             }
