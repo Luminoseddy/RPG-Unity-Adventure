@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CombatEvents : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public delegate void EnemyEventHandler(IEnemy enemy);
+    public static event EnemyEventHandler OnEnemyDeath;
 
-    // Update is called once per frame
-    void Update()
+    public static void EnemyDied(IEnemy enemy)
     {
+        if (OnEnemyDeath != null)
+        {
+            OnEnemyDeath(enemy);
+        }
         
     }
 }

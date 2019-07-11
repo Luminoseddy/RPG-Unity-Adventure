@@ -4,19 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour 
+public class Player : MonoBehaviour
 {
- /* ============================================================================================================================================
-    VARIABLES
-    ============================================================================================================================================
-    COMPONENT REFERENCES 
-    ================================================ */
+    /* ============================================================================================================================================
+       VARIABLES
+       ============================================================================================================================================
+       COMPONENT REFERENCES 
+       ================================================ */
     [HideInInspector]
     public CameraController mainCamera;
 
     private CharacterController controller;
     private Rigidbody playerRigidbody;
-    private Animator  playerMovementAnimation;
+    private Animator playerMovementAnimation;
 
     public Transform groundDirection,
                      fallDirection,
@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public int currentHealth,
                maxHealth;
 
+    public PlayerLevel    PlayerLevel {get; set; }
     public CharacterStats characterStats;
 
 
@@ -128,6 +129,7 @@ public class Player : MonoBehaviour
         Start is called before the first frame update */
     void Start()
     {
+        PlayerLevel = GetComponent<PlayerLevel>();
         // this.healthBar.value = this.health;
         this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10); // begining stats.

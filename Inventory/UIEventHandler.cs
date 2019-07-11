@@ -16,7 +16,7 @@ public class UIEventHandler : MonoBehaviour
     public static event  StatsEventHandler OnStatsChanged;
 
     public delegate void PlayerLevelEventHandler();
-    public static event  PlayerLevelEventHandler OPlayerLevelChanged;
+    public static event  PlayerLevelEventHandler OnPlayerLevelChange;
 
 
     public static void ItemAddedToInventory(Item item)
@@ -40,9 +40,8 @@ public class UIEventHandler : MonoBehaviour
         OnStatsChanged();
     }
 
-    public static void PlayerLevelChanged()
+    public static void OnPlayerLevelChanged()
     {
-        PlayerLevelChanged();
+        OnPlayerLevelChange();
     }
-
 }

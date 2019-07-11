@@ -5,20 +5,23 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Skelly : MonoBehaviour, IEnemy
-{ 
-    public  LayerMask      aggroLayerMask;
+{
+    public int Experience { get; set; }
 
+    public float attack,
+                 strength,
+                 maxHealth,
+                 currentHealth;
+
+    public  LayerMask      aggroLayerMask;
     private NavMeshAgent   navAgent;
     private CharacterStats characterStats;
     private Player         player;
     private Collider[]     withinAggroColliders;
 
-    public float attack, strength, maxHealth, currentHealth;
-
-    public int Experience { get; set; }
-
     void Start()
     {
+        Experience = 20;
         navAgent = GetComponent<NavMeshAgent>(); // Reference from navagent on the enemy
         characterStats = new CharacterStats(5, 10, 15);
         currentHealth = maxHealth;
@@ -69,6 +72,7 @@ public class Skelly : MonoBehaviour, IEnemy
 
     void Die()
     {
+        CombatEvents.EnemyDied(this); // This instance of the object.
         Destroy(gameObject);
     }
 
@@ -79,6 +83,6 @@ public class Skelly : MonoBehaviour, IEnemy
 
     void IEnemy.Die()
     {
-        throw new NotImplementedException();
+        
     }
 }
