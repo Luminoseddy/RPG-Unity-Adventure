@@ -133,7 +133,7 @@ public class Player : MonoBehaviour
         characterStats = new CharacterStats(10, 10, 10); // begining stats.
 
         // CAUSES A BUG.. 
-        // UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
+        //UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
 
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
 
 		
     }
-
+     
     /* Update is called once per frame */
     void Update(){
 

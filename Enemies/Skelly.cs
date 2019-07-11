@@ -14,7 +14,9 @@ public class Skelly : MonoBehaviour, IEnemy
     private Collider[]     withinAggroColliders;
 
     public float attack, strength, maxHealth, currentHealth;
-    
+
+    public int Experience { get; set; }
+
     void Start()
     {
         navAgent = GetComponent<NavMeshAgent>(); // Reference from navagent on the enemy
@@ -28,7 +30,6 @@ public class Skelly : MonoBehaviour, IEnemy
            decide if theres a collider its looking for inside the spehre or not.. Sphere == radius.
            10 units for it to exist. */
         withinAggroColliders = Physics.OverlapSphere(transform.position, 10, aggroLayerMask);
-
         if (withinAggroColliders.Length > 0)
         {
             ChasePlayer(withinAggroColliders[0].GetComponent<Player>());
@@ -74,5 +75,10 @@ public class Skelly : MonoBehaviour, IEnemy
     public void PerformAttack()
     {
         player.TakeDamage(5); 
+    }
+
+    void IEnemy.Die()
+    {
+        throw new NotImplementedException();
     }
 }

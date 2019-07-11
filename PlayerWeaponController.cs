@@ -27,9 +27,7 @@ public class PlayerWeaponController : MonoBehaviour
         // This is where we destroy the item in the players hand. to swap/remove weapons.
         if(EquippedWeapon != null) 
         {
-            InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);
-            characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
-            Destroy(playerHand.transform.GetChild(0).gameObject);
+            UnequipWeapon();
         }
         // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
@@ -45,10 +43,16 @@ public class PlayerWeaponController : MonoBehaviour
         equippedWeapon.Stats = itemToEquip.Stats;
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatsBonus(itemToEquip.Stats);
-        // Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
         UIEventHandler.ItemEquipped(itemToEquip);
         UIEventHandler.StatsChanged();
+    }
 
+    public void UnequipWeapon()
+    {
+        InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);       // Gives us back the item.
+        characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats); // Remove the stats of the equipt item.
+        Destroy(playerHand.transform.GetChild(0).gameObject);                          // Destory the item that was currently equipt
+        UIEventHandler.StatsChanged();
     }
 
     private void Update()
@@ -67,7 +71,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
         // Equip weapon when attack - PerformAttack() from Sword.cs class
         equippedWeapon.PerformAttack(CalculateDamage());
-        
     }
 
     public void PerformWeaponSpecialAttack()
