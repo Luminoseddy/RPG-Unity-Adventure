@@ -56,7 +56,7 @@ public class Skelly : MonoBehaviour, IEnemy
             if (!IsInvoking("PerformAttack"))
             {
                 // Invoke itself automatically, starting time attack is .5f.  when it gets close, then every 2 seconds hit.
-                InvokeRepeating("PerformAttack", 0.0f, 1f);
+                InvokeRepeating("PerformAttack", 0.1f, 1f);
             }   
         }
         else

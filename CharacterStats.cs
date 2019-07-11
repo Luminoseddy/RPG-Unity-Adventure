@@ -17,13 +17,6 @@ public class CharacterStats
         };
     }
 
-    //void Start() // Not too much fun this way.
-    //{
-    //    // Adding a bonus on top of - Power: default stat 4
-    //    stats.Add(new BaseStat(1, "Power", "Power level"));     // Beggining Stats
-    //    stats.Add(new BaseStat(10,"Vitality", "Vitality level")); 
-    //}
-
     public BaseStat GetStat(BaseStat.BaseStatType stat)
     {
         return this.stats.Find(x => x.StatType == stat); 

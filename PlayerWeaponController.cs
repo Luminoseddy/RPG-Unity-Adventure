@@ -31,7 +31,6 @@ public class PlayerWeaponController : MonoBehaviour
             characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats);
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
-        // Casting gameobject 
         // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
@@ -47,7 +46,7 @@ public class PlayerWeaponController : MonoBehaviour
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatsBonus(itemToEquip.Stats);
         // Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
-        // UIEventHandler.ItemEquipped(itemToEquip); // Current item trying to equip gets passed to the UI: DEBUGG
+        UIEventHandler.ItemEquipped(itemToEquip); // Current item trying to equip gets passed to the UI: DEBUGG
     }
 
     private void Update()

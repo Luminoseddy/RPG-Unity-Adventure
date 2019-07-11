@@ -13,19 +13,12 @@ public class CharacterPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    //Update is called once per frame
-    void Update()
-    {
-        // Set up the listener
         UIEventHandler.OnPlayerHealthChanged += UpdateHealth;
     }
 
-    void UpdateHealth(int health)
+    void UpdateHealth(int currentHealth, int maxHealth)
     {
-        this.health.text = health.ToString();
-        this.healthFill.fillAmount = (float)health / (float)health;
+        this.health.text = currentHealth.ToString();
+        this.healthFill.fillAmount = currentHealth / maxHealth; // Pops it into fillAmount
     }
 }

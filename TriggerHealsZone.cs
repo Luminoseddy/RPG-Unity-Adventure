@@ -14,11 +14,10 @@ public class TriggerHealsZone : MonoBehaviour
         {
             if (isHealing)
             {
-                // Increase hitpoints
-                // col.SendMessage("Healing", Time.deltaTime * heal);
-                player.health = player.health + (heal * Time.deltaTime);
+
+                player.currentHealth = (int)(player.currentHealth + (heal * Time.deltaTime));
             }
-            UIEventHandler.HealthChanged((int)player.health);
+            UIEventHandler.HealthChanged(this.player.currentHealth, this.player.maxHealth);
         }
     }
 }

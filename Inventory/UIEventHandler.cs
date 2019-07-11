@@ -6,17 +6,17 @@ public class UIEventHandler : MonoBehaviour
 {
     // Delegates:  Apointer to a method
     public delegate void ItemEventHandler(Item item);
-    public static event ItemEventHandler OnItemAddedToInventory;
-    public static event ItemEventHandler OnItemEquipped;
+    public static event  ItemEventHandler OnItemAddedToInventory;
+    public static event  ItemEventHandler OnItemEquipped;
 
-    public delegate void PlayerHealthEventHandler(int health);
-    public static event PlayerHealthEventHandler OnPlayerHealthChanged;
+    public delegate void PlayerHealthEventHandler(int currentHealth, int maxHealth);
+    public static event  PlayerHealthEventHandler OnPlayerHealthChanged;
 
     public delegate void StatsEventHandler(); // Grab the new copy of the refference and punch it into the UI
-    public static event StatsEventHandler OnStatsChanged;
+    public static event  StatsEventHandler OnStatsChanged;
 
     public delegate void PlayerLevelEventHandler();
-    public static event PlayerLevelEventHandler OnPlayerLevel;
+    public static event  PlayerLevelEventHandler OnPlayerLevel;
 
 
     public static void ItemAddedToInventory(Item item)
@@ -29,9 +29,9 @@ public class UIEventHandler : MonoBehaviour
         OnItemEquipped(item);
     }
 
-    public static void HealthChanged(int health)
+    public static void HealthChanged(int currentHealth, int maxHealth)
     {
-        OnPlayerHealthChanged(health);
+        OnPlayerHealthChanged(currentHealth, maxHealth);
     }
 
 

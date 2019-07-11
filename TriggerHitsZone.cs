@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerHitsZone : MonoBehaviour
 {
     public bool isDamaging; // Is it damaging? False.
-    public float damage = 24.5f;
+    public int damage = 25;
     public Player player;
 
     public void OnTriggerStay(Collider collider)
@@ -13,12 +13,10 @@ public class TriggerHitsZone : MonoBehaviour
         if (collider.tag == "Player")
         {
             if (isDamaging)
-            {
-                // Take away hitpoints
-                // col.SendMessage("Taking Damage", Time.deltaTime * damage);
-                player.health = player.health - (damage * Time.deltaTime);
+            {            
+                player.currentHealth = (int)(player.currentHealth - (damage * Time.deltaTime));
             }
-            UIEventHandler.HealthChanged((int)player.health);
+            UIEventHandler.HealthChanged(this.player.currentHealth, this.player.currentHealth);
         }
     }
 }

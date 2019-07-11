@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     private CharacterController controller;
     private Rigidbody playerRigidbody;
-    private Animator playerMovementAnimation;
+    private Animator  playerMovementAnimation;
 
     public Transform groundDirection,
                      fallDirection,
@@ -24,8 +24,10 @@ public class Player : MonoBehaviour
 
     /* PLAYER STATS 
     ================================================ */
-    public float health = 100;
-    public Slider healthBar;
+    //public float health = 100;
+    //public Slider healthBar;
+    public int currentHealth,
+               maxHealth;
 
     public CharacterStats characterStats;
 
@@ -103,8 +105,8 @@ public class Player : MonoBehaviour
 
      //public GameObject bombPrefab; 
 
-    [Header("Visuals")]
-    public GameObject model;
+    //[Header("Visuals")]
+    //public GameObject model;
 
     //[Header("Movement")]
     //public float knockBackForce;
@@ -126,21 +128,22 @@ public class Player : MonoBehaviour
         Start is called before the first frame update */
     void Start()
     {
-        this.healthBar.value = this.health;
-
+        // this.healthBar.value = this.health;
+        this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10); // begining stats.
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
 
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
 
-		//UIEventHandler.HealthChanged((int)health);
+		
     }
 
     /* Update is called once per frame */
     void Update(){
 
-        PlayerHealthBar();
+        // PlayerHealthBar();
         ProcessInput();
         LocoMotion();
         //if (knockBackTimer > 0)
@@ -156,47 +159,36 @@ public class Player : MonoBehaviour
 
     // ============================================================================================================================================
     // Health Bar Functionality
-    // Source: https://www.youtube.com/watch?v=9W0xLonwbLo
+    // Source: https://www.youtube.com/watch?v=9W0xLonwbLo // CURRENTLY NOT USING THIS SCRIPT
     // ============================================================================================================================================
-    public void PlayerHealthBar()
-    {
-        healthBar.value = health;
-
-        health += (0.5f * Time.deltaTime); // Alternates health automatically as time passes.
-
-        if (health <= 0 || health >= 100)
-        {
-            health = 100;
-        }
-		UIEventHandler.HealthChanged((int)health);
-	}
+    // public void PlayerHealthBar()
+    // {
+	//      UIEventHandler.HealthChanged(currentHealth, maxHealth);
+	// }
 
     public void TakeDamage(int amount)
     {
         Debug.Log("Player takes: " + amount + " damage");
-
-        healthBar.value = health;
-        health -= amount;
-        if (health <= 0 || health >= 100)
+        currentHealth -= amount;
+        if(currentHealth <= 0)
         {
-            Debug.Log("Rehealed!");
-            health = 100;
+            Die();
         }
-		UIEventHandler.HealthChanged((int)health); // Updates the UI from damage taken 
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth); // Updates the UI from damage taken 
     }
 
+    private void Die()
+    {
+        Debug.Log("Revived!");
+        this.currentHealth = this.maxHealth;
+        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
+    }
 
     // ============================================================================================================================================
     // Experience Bar Functionality
     // ============================================================================================================================================
 
-
-
-    // Coming soon.....
-
-
-
-
+    // Coming soon....
 
 
 
@@ -241,7 +233,6 @@ public class Player : MonoBehaviour
         {
             // inputNormalized = inputs.normalized;
             currentSpeed = baseSpeed;
-
             if (run)
             {
                 currentSpeed *= runSpeed;
