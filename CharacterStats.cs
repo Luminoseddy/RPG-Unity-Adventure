@@ -28,7 +28,6 @@ public class CharacterStats
     {
         foreach(BaseStat statBonus in statBonuses)
         {
-            // stats.Find( x => x.StatName == statBonus.StatName).AddStatBonus(new StatBonus(statBonus.BaseValue));
             GetStat(statBonus.StatType).AddStatBonus(new StatBonus(statBonus.BaseValue));
         }
     }

@@ -46,7 +46,9 @@ public class PlayerWeaponController : MonoBehaviour
         currentlyEquippedItem = itemToEquip;
         characterStats.AddStatsBonus(itemToEquip.Stats);
         // Debug.Log(equippedWeapon.Stats[0].GetCalculatedStatValue());
-        UIEventHandler.ItemEquipped(itemToEquip); // Current item trying to equip gets passed to the UI: DEBUGG
+        UIEventHandler.ItemEquipped(itemToEquip);
+        UIEventHandler.StatsChanged();
+
     }
 
     private void Update()

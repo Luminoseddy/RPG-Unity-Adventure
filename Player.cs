@@ -131,7 +131,9 @@ public class Player : MonoBehaviour
         // this.healthBar.value = this.health;
         this.currentHealth = this.maxHealth;
         characterStats = new CharacterStats(10, 10, 10); // begining stats.
-        UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
+
+        // CAUSES A BUG.. 
+        // UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
 
         playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();

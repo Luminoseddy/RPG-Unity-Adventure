@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerHitsZone : MonoBehaviour
 {
     public bool isDamaging; // Is it damaging? False.
-    public int damage = 25;
+    public int damage = 5;
     public Player player;
 
     public void OnTriggerStay(Collider collider)

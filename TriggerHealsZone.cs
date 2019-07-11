@@ -14,10 +14,9 @@ public class TriggerHealsZone : MonoBehaviour
         {
             if (isHealing)
             {
-
                 player.currentHealth = (int)(player.currentHealth + (heal * Time.deltaTime));
             }
-            UIEventHandler.HealthChanged(this.player.currentHealth, this.player.maxHealth);
+            UIEventHandler.HealthChanged(this.player.currentHealth, this.player.currentHealth);
         }
     }
 }
