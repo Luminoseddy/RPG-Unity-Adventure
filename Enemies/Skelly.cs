@@ -7,9 +7,9 @@ using UnityEngine.AI;
 public class Skelly : MonoBehaviour, IEnemy
 {
     public int       Experience { get; set; }
+    public Spawner   Spawner    { get; set; }
     public DropTable DropTable  { get; set; }
     
-
     public float attack,
                  strength,
                  maxHealth,
@@ -36,7 +36,6 @@ public class Skelly : MonoBehaviour, IEnemy
             new LootDrop("Sword", 25), // 25% chance of sword being dropped.
             new LootDrop("Staff_Of_Pain", 25),
             new LootDrop("Heal_Potion", 25)
-
         };
 
         Experience = 200;
@@ -88,10 +87,11 @@ public class Skelly : MonoBehaviour, IEnemy
         }
     }
 
-    void Die()
+    public void Die()
     {
         DropLoot();
         CombatEvents.EnemyDied(this); // This instance of the object.
+        this.Spawner.Respawn();
         Destroy(gameObject);
     }
 
@@ -99,6 +99,7 @@ public class Skelly : MonoBehaviour, IEnemy
     {
         player.TakeDamage(5);
     }
+
     void DropLoot()
     {
         Item item = DropTable.GetDrop();
@@ -107,10 +108,5 @@ public class Skelly : MonoBehaviour, IEnemy
             PickupItem instance = Instantiate(pickupItem, transform.position, Quaternion.identity); // Item dropped will appear right where NPC died.
             instance.ItemDrop = item;
         }
-    }
-
-    void IEnemy.Die()
-    {
-       
     }
 }

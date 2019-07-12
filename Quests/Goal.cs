@@ -4,40 +4,15 @@ using UnityEngine;
 
 public class Goal 
 {
-    // Quest goals.
-    public string Description 
-    { 
-        get; set; 
-    }
-  
-    // When goal completed
-    public bool Completed
-    {
-        get; set;
-    }
-
-    // how much of the goal has been completed
-    public int CurrentAmount
-    {
-        get; set;
-    }
-
-    public int RequiredAmount
-    {
-        get; set;
-    }
-
-
+    public bool   Completed      { get; set; } // When goal completed
+    public int    CurrentAmount  { get; set; } // how much of the goal has been completed
+    public int    RequiredAmount { get; set; }
+    public string Description    { get; set; } // Quest goals.
+    
     public virtual void Init()
     {
         // default init
     }
-
-
-
-
-
-
 
     public void Evaluate()
     {
