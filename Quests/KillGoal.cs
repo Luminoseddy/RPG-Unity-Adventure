@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillGoal : MonoBehaviour
+public class KillGoal : Goal
 {
-    // Start is called before the first frame update
-    void Start()
+    public int EnemyID { get; set; }
+    public KillGoal(int enemyID, string description, bool completed, int currentAmount, int requiredAmount)
     {
-        
+        this.EnemyID        = enemyID;
+        this.Description    = description;
+        this.Completed      = completed;
+        this.CurrentAmount  = currentAmount;
+        this.RequiredAmount = requiredAmount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Init()
     {
-        
+        base.Init();
+        CombatEvents.OnEnemyDeath += EnemyDied;
+    }
+
+    void EnemyDied(IEnemy enemy)
+    {
+        if(enemy.ID == this.EnemyID)
+        {
+            this.CurrentAmount++;
+            Evaluate();
+        }
     }
 }

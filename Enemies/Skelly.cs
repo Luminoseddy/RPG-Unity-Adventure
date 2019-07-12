@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Skelly : MonoBehaviour, IEnemy
 {
     public int       Experience { get; set; }
+    public int       ID         { get; set; }
     public Spawner   Spawner    { get; set; }
     public DropTable DropTable  { get; set; }
     
@@ -37,7 +38,7 @@ public class Skelly : MonoBehaviour, IEnemy
             new LootDrop("Staff_Of_Pain", 25),
             new LootDrop("Heal_Potion", 25)
         };
-
+        ID = 0; // Skelly is the first enemy, and its = 0.
         Experience = 200;
         navAgent = GetComponent<NavMeshAgent>(); // Reference from navagent on the enemy
         characterStats = new CharacterStats(5, 10, 15);
