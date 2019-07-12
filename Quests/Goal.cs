@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal 
+public class Goal
 {
+    public Quest  Quest          { get; set; }
     public bool   Completed      { get; set; } // When goal completed
     public int    CurrentAmount  { get; set; } // how much of the goal has been completed
     public int    RequiredAmount { get; set; }
@@ -24,6 +25,7 @@ public class Goal
 
     public void Complete()
     {
+        Quest.CheckGoals();
         Completed = true;
     }
 }
