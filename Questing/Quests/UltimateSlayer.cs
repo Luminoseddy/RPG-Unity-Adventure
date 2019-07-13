@@ -13,11 +13,11 @@ public class UltimateSlayer : Quest
         ExperienceReward = 100;
 
 
-        // Quest 0
-        Goals.Add(new KillGoal(this, 0, "Kill 5 Skelly behind the Blue's Inn.", false, 0, 5)); 
+        /* Quest: EneryId 0, description, completed?, currentAmount, requiredAmount. */
+        Goals.Add(new KillGoal(this, 0, "Kill 5 Skelly behind the Blue's Inn.", false, 0, 1)); 
 
         // Quest 1
-        Goals.Add(new KillGoal(this, 1, "Kill 3 Demons in the Karamja Island.", false, 0, 3));
+        Goals.Add(new KillGoal(this, 1, "Kill 3 Demons in the Karamja Island.", false, 0, 1));
 
         Goals.ForEach(goal => goal.Init());
     }

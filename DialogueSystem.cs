@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-/* Source for DialogueSystem concept:
- * https://www.youtube.com/watch?v=mXjRR1nnC5M&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=4 */
-
 public class DialogueSystem : MonoBehaviour
 {
     [HideInInspector]

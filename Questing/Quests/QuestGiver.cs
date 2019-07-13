@@ -27,7 +27,7 @@ public class QuestGiver : NPC
         }
         else
         {
-            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thanks for helping me.", "Testing __" }, name);
+            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thanks for helping me.", "" }, name);
         }
     }
 
@@ -52,3 +52,5 @@ public class QuestGiver : NPC
         }
     }
 }
+
+

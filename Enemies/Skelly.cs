@@ -27,7 +27,6 @@ public class Skelly : MonoBehaviour, IEnemy
 
     void Start()
     {
-        // Create Instance of droptable.
         DropTable = new DropTable();
 
         /* Example below, summing up the 25% chance of drops, we have a total of 75%.
@@ -67,7 +66,6 @@ public class Skelly : MonoBehaviour, IEnemy
         }
     }
 
-    // Source: @17:20 https://www.youtube.com/watch?v=Bs0rJEkYBvc&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=16
     void ChasePlayer(Player player)
     {
         // Ensures the enemy can't attack unless close to you.

@@ -8,6 +8,7 @@ public interface IEnemy
 
     int Experience { get; set; }
     int ID         { get; set; }
+
     void Die();
     void TakeDamage(int amount);
     void PerformAttack();

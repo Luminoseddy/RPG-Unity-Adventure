@@ -12,7 +12,7 @@ public class PlayerLevel : MonoBehaviour
     private void Start()
     {
         // Listening to make sure the enemy dies to give the exp.
-        // Subscriber EneyToExperience
+        // Subscriber EnemyToExperience
         CombatEvents.OnEnemyDeath += EnemyToExperience;
         Level = 1;  
     }
@@ -32,7 +32,6 @@ public class PlayerLevel : MonoBehaviour
             CurrentExperience -= RequiredExperience;
             Level++;
         }
-
         UIEventHandler.OnPlayerLevelChanged();
     }
 }

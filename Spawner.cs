@@ -41,11 +41,4 @@ public class Spawner : MonoBehaviour
         instance.Spawner = this;
         spawning = false;
     }
-
-
-
-
-
-
-
 }
