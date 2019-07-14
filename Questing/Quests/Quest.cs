@@ -5,12 +5,21 @@ using System.Linq;
 
 public class Quest : MonoBehaviour
 {
-    public List<Goal> Goals { get; set; } = new List<Goal>();
+    public List<Goal> Goals { get; set; } 
     public string QuestName { get; set; }
     public string Description { get; set; }
     public int ExperienceReward { get; set; }
-    public Item ItemReward { get; set; }
-    public bool Completed { get; set; }
+    public Item ItemReward   { get; set; }
+    public bool Completed    { get; set; }
+
+    private int level;
+    public int Level
+    {
+        get { return level; }
+        set { level = value; }  
+    }
+
+
 
     public void CheckGoals()
     {
