@@ -12,7 +12,6 @@ public class WorldInteractions : MonoBehaviour
 
     public GameObject player;
     public GameObject npc;
-
     public float distance;
 
     [HideInInspector]
@@ -28,12 +27,14 @@ public class WorldInteractions : MonoBehaviour
         // Source to compare distance from npcObject
         // https://www.youtube.com/watch?v=OMPV-duv25Q
 
-        distance = Vector3.Distance(player.transform.position, npc.transform.position);
+       
 
-        if (distance <= 5 && Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        // distance = Vector3.Distance(player.transform.position, npc.transform.position);
+
+        if ( /*distance >= 5 && */ Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            if(distance > 5)
-            { 
+            if (distance > 5)
+            {
                 // Debug.Log("You must get closer to speak with this NPC.");
             }
             else
@@ -42,6 +43,7 @@ public class WorldInteractions : MonoBehaviour
             }
         }
     }
+
 
     void GetInteractions()
     {
@@ -65,7 +67,7 @@ public class WorldInteractions : MonoBehaviour
             }
             else
             {
-                // Debug.Log("Not clicking interactables..");
+                 //Debug.Log("Not clicking interactables..");
                  //playerAgent.stoppingDistance = 0;
                  //playerAgent.destination = interactionInfo.point;           
             }

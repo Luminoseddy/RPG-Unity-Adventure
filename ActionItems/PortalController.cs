@@ -7,8 +7,8 @@ public class PortalController : MonoBehaviour
 {
     [SerializeField] private Button button;
 
-    private Portal[] portal;
-    private Player player;
+    private Portal[]   portal;
+    private Player     player;
     private GameObject panel;
 
     // Use this for initialization

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Portal : ActionItem
 {
-    public Vector3 TeleportLocation { get; set; }
+    [SerializeField] private Portal[] linkedPortals;
+
+    public  Vector3          TeleportLocation { get; set; }
     private PortalController PortalController { get; set; }
 
-    [SerializeField] private Portal[] linkedPortals;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,6 @@ public class Portal : ActionItem
     public override void Interact()
     {
         PortalController.ActivatePortal(linkedPortals);
-        playerAgent.ResetPath();
-    
+        // playerAgent.ResetPath();
     }
 }

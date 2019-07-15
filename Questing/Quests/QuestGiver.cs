@@ -5,36 +5,34 @@ using UnityEngine;
 public class QuestGiver : NPC
 {
     [SerializeField] private GameObject quests;
-    [SerializeField] private string questType;
+    [SerializeField] private string     questType;
 
     public bool   AssignedQuest { get; set; } // Marks the quest, started or finished.
-    public bool   Helped        { get; set; }
+    public bool   Helped        { get; set; } // Mark as true when you have successfully completed the quest. Basically did you help the questgiver.
     private Quest Quest         { get; set; }
 
     public override void Interact()
     {
-        
-        if (!AssignedQuest && !Helped)
+        if (!AssignedQuest && !Helped) 
         {
             base.Interact();
-            // Assign quest
             AssignQuest();
         }
         else if(AssignedQuest && !Helped)
         {
-            // Check
             CheckQuest();
         }
         else
         {
-            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thanks for helping me.", "" }, name);
+            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thanks for helping me.", "Good-bye." }, name);
         }
     }
 
     void AssignQuest()
     {
-        AssignedQuest = true;
-        Quest = (Quest)quests.AddComponent(System.Type.GetType(questType));
+        AssignedQuest = true; // Tells us that the quest has been assigned.
+        Quest = (Quest)quests.AddComponent(System.Type.GetType(questType)); // Makes the Quest appear dynamically.
+       
     }
 
     void CheckQuest()
@@ -44,11 +42,11 @@ public class QuestGiver : NPC
             Quest.GiveReward();
             Helped = true;
             AssignedQuest = false;
-            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thank you here's your reward", "Testing __" }, name);
+            DialogueSystem.Instance.AddNewDialogue(new string[] { "Thank you here's your reward", "Good-Bye" }, name);
         }
         else
         {
-            DialogueSystem.Instance.AddNewDialogue(new string[] { "Sorry, Still currently questing", "Testing __" }, name);
+            DialogueSystem.Instance.AddNewDialogue(new string[] { "You're not finished.", "Come back when you're finished." }, name);
         }
     }
 }

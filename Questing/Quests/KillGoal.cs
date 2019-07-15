@@ -5,6 +5,7 @@ using UnityEngine;
 public class KillGoal : Goal
 {
     public int EnemyID { get; set; }
+
     public KillGoal(Quest quest, int enemyID, string description, bool completed, int currentAmount, int requiredAmount)
     {
         this.Quest          = quest;
