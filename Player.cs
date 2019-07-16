@@ -129,6 +129,8 @@ public class Player : MonoBehaviour
         Start is called before the first frame update */
     void Start()
     {
+       
+
         PlayerLevel = GetComponent<PlayerLevel>();
         // this.healthBar.value = this.health;
         this.currentHealth = this.maxHealth;
@@ -205,24 +207,9 @@ public class Player : MonoBehaviour
 
     // ============================================================================================================================================
     // Teleportation Functionality
-    // Source: Unity Account.
+    // Source: 
     // ============================================================================================================================================
-
-    public bool JustTeleported
-    {
-        get
-        {
-            bool returnValue = justTeleported; // We saved what we had from justTeleported into returnValue
-            justTeleported = false;            // Forcing to be false
-            return returnValue;                // Returns what we had saved before
-        }
-    }
-
-    public void Teleporter(Vector3 target)
-    {
-        transform.position = target;           // Tell game camera we teleorted
-        justTeleported = true;                 // We create a property on the player that will tell us if they teleported.
-    }
+    
 
     // ============================================================================================================================================
     // Locomotion - PHYSICS FOR PLAYER MOVEMENT

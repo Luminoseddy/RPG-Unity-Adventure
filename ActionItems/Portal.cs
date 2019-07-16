@@ -9,7 +9,6 @@ public class Portal : ActionItem
     public  Vector3          TeleportLocation { get; set; }
     private PortalController PortalController { get; set; }
 
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,4 +21,5 @@ public class Portal : ActionItem
         PortalController.ActivatePortal(linkedPortals);
         // playerAgent.ResetPath();
     }
+
 }

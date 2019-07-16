@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    public Teleporter exitTeleporter;
-    public float exitOffset = 2f;
+    public GameObject ui;
+    public GameObject objectToTeleport;
+    public Transform teleportLocation;
 
-    // Start is called before the first frame update
-    void OnTriggerEnter(Collider otherCollider){
-        if (otherCollider.GetComponent<Player>() != null ){
-            // To avoid errors.
-            if (exitTeleporter != null){
-                Player player = otherCollider.GetComponent<Player>(); // Player reference
-                player.transform.position = exitTeleporter.transform.position + exitTeleporter.transform.forward * exitOffset;
-            }
+    void Start()
+    {
+        ui.SetActive(false);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        ui.SetActive(true);
+        if ((other.gameObject.tag == "Player") && Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            objectToTeleport.transform.position = teleportLocation.transform.position;
         }
+    }
+
+    private void OnTriggerExit()
+    {
+        ui.SetActive(false);
     }
 }

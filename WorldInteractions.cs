@@ -24,15 +24,11 @@ public class WorldInteractions : MonoBehaviour
 
     void Update()
     {
-        // Source to compare distance from npcObject
-        // https://www.youtube.com/watch?v=OMPV-duv25Q
-
-       
-
         // distance = Vector3.Distance(player.transform.position, npc.transform.position);
 
         if ( /*distance >= 5 && */ Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
+            
             if (distance > 5)
             {
                 // Debug.Log("You must get closer to speak with this NPC.");
