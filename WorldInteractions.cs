@@ -3,67 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-// Source: https://www.youtube.com/watch?v=k-FVQ3jpRN8
-
-
 public class WorldInteractions : MonoBehaviour
 {
-
     public GameObject player;
     public GameObject npc;
-    public float distance;
 
-    [HideInInspector]
-    public NavMeshAgent playerAgent;
+    /* NavMesh_ allows the player to walk on a path */
+    [HideInInspector] public Rigidbody playerRigidbody;
 
     void Start()
     {
-         playerAgent = GetComponent<NavMeshAgent>();
+        playerRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        // Source to compare distance from npcObject
-        // https://www.youtube.com/watch?v=OMPV-duv25Q
-
-       
-
-        // distance = Vector3.Distance(player.transform.position, npc.transform.position);
-
-        if ( /*distance >= 5 && */ Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        /* Checks if the mouse is hovering over the object. */
+        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())  
         {
-            if (distance > 5)
-            {
-                // Debug.Log("You must get closer to speak with this NPC.");
-            }
-            else
-            {
-                GetInteractions();
-            }
+            GetInteractions();
         }
+        Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
     }
 
-
     void GetInteractions()
-    {
+    { 
+        /* Takes the coordinate of the mouse, sends out a ray in the screen space of the viewport.*/
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        /* Store the information we get back. */
         RaycastHit interactionInfo;
-
+        /* Pass the camera, pass the raycast hit and output the information of the raycast object, how far does the ray go? inifnite). */
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
-            // playerAgent.updateRotation = true; 
+            /* Stores the object we hit: goes through the component collider. */
             GameObject interactedObject = interactionInfo.collider.gameObject;
 
             if (interactedObject.tag == "Enemy")
             {
-                // Debug.Log("Interactable Enemy Object Succes");
-                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
+                /* Component derived from interactable. */
+                interactedObject.GetComponent<Interactable>().GetContact(playerRigidbody);
             }
             else if (interactedObject.tag == "Interactable Object")
             {
-                // Debug.Log("Interactable Object Succes");
-                interactedObject.GetComponent<Interactable>().CheckPlayerAndPlayerAgentCollision(playerAgent);
+                interactedObject.GetComponent<Interactable>().GetContact(playerRigidbody);
             }
             else
             {

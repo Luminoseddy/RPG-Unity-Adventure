@@ -8,6 +8,7 @@ public class PickupItem : Interactable
 
     public override void Interact()
     {
+        // Debug.Log("Item interacted with. Succeed.");
         InventoryController.Instance.GiveItem(ItemDrop);
         Destroy(gameObject);
     }

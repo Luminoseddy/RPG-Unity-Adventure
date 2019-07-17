@@ -1,20 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
 public class Teleporter : MonoBehaviour
 {
-    public Teleporter exitTeleporter;
-    public float exitOffset = 2f;
+    public GameObject ui;
+    public GameObject objectToTeleport;
+    public Transform teleportLocation;
+    void Start()
+    {
+        ui.SetActive(false);
+    }
 
-    // Start is called before the first frame update
-    void OnTriggerEnter(Collider otherCollider){
-        if (otherCollider.GetComponent<Player>() != null ){
-            // To avoid errors.
-            if (exitTeleporter != null){
-                Player player = otherCollider.GetComponent<Player>(); // Player reference
-                player.transform.position = exitTeleporter.transform.position + exitTeleporter.transform.forward * exitOffset;
-            }
+    void OnTriggerStay(Collider other)
+    {
+        ui.SetActive(true);
+        if ((other.gameObject.tag == "Player") && Input.GetKeyDown(KeyCode.Y))
+        {
+            objectToTeleport.transform.position = teleportLocation.transform.position;
         }
+    }
+    void OnTriggerExit()
+    {
+        ui.SetActive(false);
     }
 }

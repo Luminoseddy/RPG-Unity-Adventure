@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [HideInInspector]
-    public string npcName;
+    [HideInInspector] public string npcName;
 
     public static DialogueSystem Instance { get; set; }
     public GameObject dialoguePanel;

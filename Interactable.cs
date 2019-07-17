@@ -5,16 +5,18 @@ using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
-    [HideInInspector]
-    public NavMeshAgent playerAgent;
 
-    private bool hasInteracted, isEnemy;
+    [HideInInspector] public Rigidbody playerRigidbody;
 
+    private bool hasInteracted,
+                 isEnemy;
 
-    public virtual void CheckPlayerAndPlayerAgentCollision(NavMeshAgent playerAgent)
+    /* Virtual methods are subclasses, extends interactable and methods within that can be overwritten.
+     * Passed from WorldInteraction class. */
+    public virtual void GetContact(Rigidbody playerRigidbody)
     {
         hasInteracted = false;
-        //this.playerAgent = playerAgent;
+        //this.playerRigidbody = playerRigidbody;
         //playerAgent.stoppingDistance = 3f;
         //playerAgent.destination = transform.position;
         Interact();
@@ -23,32 +25,29 @@ public class Interactable : MonoBehaviour
     void Update()
     {
         // check for player agent
-        if (!hasInteracted && playerAgent != null )
+        if (!hasInteracted && playerRigidbody != null )
         {
-            // Checks the distance between playerAgent and player.
-            if (playerAgent.remainingDistance <= playerAgent.stoppingDistance)
-            {
-                if (!isEnemy)
-                {
-                    Interact();
-                }
-                EnsureLookDirection();
-                hasInteracted = true;
-            }
+            //Checks the distance between playerAgent and player.
+            //if (playerRigidbody.remainingDistance <= playerRigidbody.stoppingDistance)
+            //{
+                //if (!isEnemy)
+                //{
+                //    Interact();
+                //}
+                //EnsureLookDirection();
+                //hasInteracted = true;
+            //}
         }
     }
 
-    // SOURCE 5:00 https://www.youtube.com/watch?v=vGEkq9yNzxw&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=9
     void EnsureLookDirection()
     {
-        playerAgent.updateRotation = false;
-        Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
-        playerAgent.transform.LookAt(lookDirection);
-        playerAgent.updateRotation = true; 
+        //playerAgent.updateRotation = false;
+        //Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
+        //playerAgent.transform.LookAt(lookDirection);
+        //playerAgent.updateRotation = true; 
     }
 
-    public virtual void Interact()
-    {
-        // Debug.Log("Interaction using base class, complete.");
-    }
+    public  virtual void Interact()          { Debug.Log("Interacted with bass class. Success."); }
+    private Vector3      GetTargetPosition() { return transform.position; }
 }

@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public CameraController mainCamera;
 
     private CharacterController controller;
-    private Rigidbody playerRigidbody;
+    // private Rigidbody playerRigidbody;
     private Animator playerMovementAnimation;
 
     public Transform groundDirection,
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         // CAUSES A BUG.. 
         //UIEventHandler.HealthChanged(this.currentHealth, this.maxHealth);
 
-        playerRigidbody         = GetComponent<Rigidbody>();
+        // playerRigidbody         = GetComponent<Rigidbody>();
         controller              = GetComponent<CharacterController>();
         playerMovementAnimation = GetComponent<Animator>();
 
@@ -208,21 +208,21 @@ public class Player : MonoBehaviour
     // Source: Unity Account.
     // ============================================================================================================================================
 
-    public bool JustTeleported
-    {
-        get
-        {
-            bool returnValue = justTeleported; // We saved what we had from justTeleported into returnValue
-            justTeleported = false;            // Forcing to be false
-            return returnValue;                // Returns what we had saved before
-        }
-    }
+    //public bool JustTeleported
+    //{
+    //    get
+    //    {
+    //        bool returnValue = justTeleported; // We saved what we had from justTeleported into returnValue
+    //        justTeleported = false;            // Forcing to be false
+    //        return returnValue;                // Returns what we had saved before
+    //    }
+    //}
 
-    public void Teleporter(Vector3 target)
-    {
-        transform.position = target;           // Tell game camera we teleorted
-        justTeleported = true;                 // We create a property on the player that will tell us if they teleported.
-    }
+    //public void Teleporter(Vector3 target)
+    //{
+    //    transform.position = target;           // Tell game camera we teleorted
+    //    justTeleported = true;                 // We create a property on the player that will tell us if they teleported.
+    //}
 
     // ============================================================================================================================================
     // Locomotion - PHYSICS FOR PLAYER MOVEMENT
@@ -606,10 +606,8 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (!jumping)
-        {
-            jump = true;
-        }
+        if (!jumping) { jump = true; }
+       
 
         jumpDirection = (transform.forward * inputs.y + transform.right * inputs.x).normalized;
         jumpSpeed = currentSpeed;
@@ -631,14 +629,10 @@ public class Player : MonoBehaviour
     {
         float axis = 0;
 
-        if (pos)
-        {
-            axis += 1;
-        }
-        if (neg)
-        {
-            axis -= 1;
-        }
+        if (pos) { axis += 1; }
+       
+        if (neg) { axis -= 1; }
+      
         return axis;
     }
 
@@ -709,12 +703,12 @@ public class Player : MonoBehaviour
     }
 
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        collisionPoint = hit.point;
-        collisionPoint = collisionPoint - transform.position;
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    collisionPoint = hit.point;
+    //    collisionPoint = collisionPoint - transform.position;
         // collisionPoint = collisionPoint.normalized; // Normalize it if needed.
-    }
+    //}
 
     //void OnTriggerEnter (Collider otherCollider){
     //    if (otherCollider.GetComponent<EnemyBullet> () != null){
@@ -732,19 +726,19 @@ public class Player : MonoBehaviour
     //    knockBackTimer = 0.2f; // x seconds in the knockBack state
     //}
 
-    void Debugger()
-    {
-        Vector3 lineStart = transform.position + Vector3.up * 0.05f;
+    //void Debugger()
+    //{
+    //    Vector3 lineStart = transform.position + Vector3.up * 0.05f;
 
-        if (showMoveDirection)    { Debug.DrawLine(lineStart, lineStart + moveDirection.forward * 0.5f, Color.cyan); }
+    //    if (showMoveDirection)    { Debug.DrawLine(lineStart, lineStart + moveDirection.forward * 0.5f, Color.cyan); }
       
-        if (showForwardDirection) { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.blue); }
+    //    if (showForwardDirection) { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.blue); }
       
-        if (showStrafeDirection)  { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.red); }
+    //    if (showStrafeDirection)  { Debug.DrawLine(lineStart - groundDirection.forward * 0.5f, lineStart + groundDirection.forward, Color.red); }
 
-        if (showFallNormal)       { Debug.DrawLine(lineStart, lineStart + fallDirection.up * 0.5f, Color.green); }
+    //    if (showFallNormal)       { Debug.DrawLine(lineStart, lineStart + fallDirection.up * 0.5f, Color.green); }
        
-        groundDirection.GetChild(0).gameObject.SetActive(showForwardDirection);
-        fallDirection.GetChild(0).gameObject.SetActive(showFallNormal);
-    }
+    //    groundDirection.GetChild(0).gameObject.SetActive(showForwardDirection);
+    //    fallDirection.GetChild(0).gameObject.SetActive(showFallNormal);
+    //}
 }

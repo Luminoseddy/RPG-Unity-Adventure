@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class StatBonus 
 {
+
     public int BonusValue { get; set; }
 
     // Constructor

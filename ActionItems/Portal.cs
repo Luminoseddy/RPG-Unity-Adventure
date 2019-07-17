@@ -14,7 +14,8 @@ public class Portal : ActionItem
     void Start()
     {
         PortalController = FindObjectOfType<PortalController>();
-        TeleportLocation = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z); // Sets the offset when teleporting. 
+        /* Position we teleport to */
+        TeleportLocation = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
     }
 
     public override void Interact()
