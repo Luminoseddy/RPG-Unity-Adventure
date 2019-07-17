@@ -18,7 +18,7 @@ public class Interactable : MonoBehaviour
         hasInteracted = false;
         //this.playerRigidbody = playerRigidbody;
         //playerAgent.stoppingDistance = 3f;
-        // playerAgent.destination = transform.position;
+        //playerAgent.destination = transform.position;
         Interact();
     }
 
@@ -40,20 +40,12 @@ public class Interactable : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 0d010d75a250b66a92269173638113bd8962d523
     void EnsureLookDirection()
     {
         //playerAgent.updateRotation = false;
         //Vector3 lookDirection = new Vector3(transform.position.x, playerAgent.transform.position.y, transform.position.z);
         //playerAgent.transform.LookAt(lookDirection);
-<<<<<<< HEAD
         //playerAgent.updateRotation = true; 
-=======
-        // playerAgent.updateRotation = true; 
->>>>>>> 0d010d75a250b66a92269173638113bd8962d523
     }
 
     public  virtual void Interact()          { Debug.Log("Interacted with bass class. Success."); }

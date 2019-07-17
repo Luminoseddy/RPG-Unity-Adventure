@@ -17,23 +17,17 @@ public class PortalController : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         panel = transform.Find("Panel_Portal").gameObject;
-
     }
 
     public void ActivatePortal(Portal[] portals)
     {
         panel.SetActive(true);
-
         for (int i = 0; i < portals.Length; i++)
         {
             Button portalButton = Instantiate(button, panel.transform);
             portalButton.GetComponentInChildren<Text>().text = portals[i].name;
             int x = i;
             portalButton.onClick.AddListener(delegate { OnPortalButtonClick(portals[x]); });
-<<<<<<< HEAD
-=======
-            Debug.Log("The well has been clicked.");
->>>>>>> 0d010d75a250b66a92269173638113bd8962d523
         }
        
     }
@@ -46,6 +40,6 @@ public class PortalController : MonoBehaviour
             Destroy(button.gameObject);
         }
         panel.SetActive(false);
-    }   
+    }
 }
 

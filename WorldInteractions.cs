@@ -18,26 +18,10 @@ public class WorldInteractions : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
         /* Checks if the mouse is hovering over the object. */
         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())  
         {
             GetInteractions();
-=======
-        // distance = Vector3.Distance(player.transform.position, npc.transform.position);
-
-        if ( /*distance >= 5 && */ Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
-        {
-            
-            if (distance > 5)
-            {
-                // Debug.Log("You must get closer to speak with this NPC.");
-            }
-            else
-            {
-                GetInteractions();
-            }
->>>>>>> 0d010d75a250b66a92269173638113bd8962d523
         }
         Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
     }
