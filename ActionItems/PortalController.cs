@@ -28,8 +28,7 @@ public class PortalController : MonoBehaviour
             portalButton.GetComponentInChildren<Text>().text = portals[i].name;
             int x = i;
             portalButton.onClick.AddListener(delegate { OnPortalButtonClick(portals[x]); });
-        }
-       
+        }    
     }
 
     void OnPortalButtonClick(Portal portal)

@@ -23,7 +23,7 @@ public class WorldInteractions : MonoBehaviour
         {
             GetInteractions();
         }
-        Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+        //Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
     }
 
     void GetInteractions()
@@ -33,7 +33,7 @@ public class WorldInteractions : MonoBehaviour
         /* Store the information we get back. */
         RaycastHit interactionInfo;
         /* Pass the camera, pass the raycast hit and output the information of the raycast object, how far does the ray go? inifnite). */
-        if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
+        if (Physics.Raycast(interactionRay, out interactionInfo, 8.0f))
         {
             /* Stores the object we hit: goes through the component collider. */
             GameObject interactedObject = interactionInfo.collider.gameObject;
