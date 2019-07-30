@@ -2,17 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/* Source: https://www.youtube.com/watch?v=7T4dFqT62Js&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=6
-
-   SOURCE: PROGRAMMING ANIMATION TO SWING THE SWORD THE WAY YOU WANT.
-         https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=8&t=255s
-
-   SOURCE: PROGRAMMING ANIMATION TO STAFF CASTING 
-   26:20 https://www.youtube.com/watch?v=hyh3kKGvJQw
-*/
-
-
 public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 {
     public List<BaseStat> Stats      { get; set; }
@@ -24,7 +13,7 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
     void Start()
     {
         fireball = Resources.Load<Fireball>("Weapons/Projectiles/Fireball");
-        // Use as reference to the object. Use this to trigger animation upon Attack
+        /* Use as reference to the object. Use this to trigger animation upon Attack */
         animator = GetComponent<Animator>();
     }
 
@@ -33,8 +22,6 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
         //Debug.Log(this.name +"attack!");
         animator.SetTrigger("Base_Attack");
     }
-
-
 
     public void PerformSpecialAttack()
     {
@@ -48,16 +35,6 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
         fireballInstance.Direction = ProjectileSpawn.forward;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 /* Old code for basic sword rotations */
 

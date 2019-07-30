@@ -8,10 +8,10 @@ public class InventoryController : MonoBehaviour
     /* REFERENCE TO WEAPON CONTROLLER */
     public static InventoryController Instance { get; set; }
 
-    public PlayerWeaponController     playerWeaponController;
-    public ConsumableController       consumableController;
-    public InventoryUIDetails         inventoryUIDetailsPanel;
-    public List<Item>                 playerItems = new List<Item>();
+    public PlayerWeaponController playerWeaponController;
+    public ConsumableController   consumableController;
+    public InventoryUIDetails     inventoryUIDetailsPanel;
+    public List<Item>             playerItems = new List<Item>();
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class InventoryController : MonoBehaviour
             Instance = this;
         }
         playerWeaponController = GetComponent<PlayerWeaponController>();
-        consumableController = GetComponent<ConsumableController>();
+        consumableController   = GetComponent<ConsumableController>();
 
         GiveItem("Heal_Potion");
         GiveItem("Staff_Of_Pain");

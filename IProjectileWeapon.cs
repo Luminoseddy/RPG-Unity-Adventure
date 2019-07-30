@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//SOURCE: 9:30 https://www.youtube.com/watch?v=hyh3kKGvJQw&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=9&t=2080s
-
 public interface IProjectileWeapon
 {
     Transform ProjectileSpawn { get; set; }

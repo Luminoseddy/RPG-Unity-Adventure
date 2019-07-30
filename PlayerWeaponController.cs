@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Source @ 43:50 -- https://www.youtube.com/watch?v=7T4dFqT62Js&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=6
-
 public class PlayerWeaponController : MonoBehaviour
 {
-    public GameObject playerHand;
+    [HideInInspector] public GameObject EquippedWeapon { get; set; }
 
-    [HideInInspector]
-    public GameObject EquippedWeapon { get; set; }
+    public GameObject playerHand;
 
     Transform spawnProjectile;
     Item currentlyEquippedItem;
@@ -24,21 +21,21 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void EquipWeapon(Item itemToEquip)
     {
-        // This is where we destroy the item in the players hand. to swap/remove weapons.
+        /* This is where we destroy the item in the players hand to swap/remove weapons. */
         if(EquippedWeapon != null) 
         {
             UnequipWeapon();
         }
-        // Going inside our 'Resources' folder and searching our only weapon called ObjectSlug
+        /* Going inside our 'Resources' folder and searching our only weapon called ObjectSlug */
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 
-        // Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped.
+        /* Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped. */
         if (EquippedWeapon.GetComponent<IProjectileWeapon>() != null)
         {
             EquippedWeapon.GetComponent<IProjectileWeapon>().ProjectileSpawn = spawnProjectile;
         }
-        // Setting Parent to parent it to playersHand (changes Parents) and becomes parented to players hand.
+        /* Setting Parent to parent it to playersHand (changes Parents) and becomes parented to players hand. */
         EquippedWeapon.transform.SetParent(playerHand.transform);
         equippedWeapon.Stats = itemToEquip.Stats;
         currentlyEquippedItem = itemToEquip;
@@ -51,7 +48,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         InventoryController.Instance.GiveItem(currentlyEquippedItem.ObjectSlug);       // Gives us back the item.
         characterStats.RemoveStatsBonus(EquippedWeapon.GetComponent<IWeapon>().Stats); // Remove the stats of the equipt item.
-        Destroy(playerHand.transform.GetChild(0).gameObject);                          // Destory the item that was currently equipt
+        Destroy(playerHand.transform.GetChild(0).gameObject);                          // Destory the item that was currently equipped
         UIEventHandler.StatsChanged();
     }
 
@@ -69,7 +66,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void PerformWeaponAttack()
     {
-        // Equip weapon when attack - PerformAttack() from Sword.cs class
+        /* Equip weapon when attack - PerformAttack() from Sword.cs class */
         equippedWeapon.PerformAttack(CalculateDamage());
     }
 
@@ -81,9 +78,9 @@ public class PlayerWeaponController : MonoBehaviour
     private int CalculateDamage()
     {
         int damageToDeal = (characterStats.GetStat(BaseStat.BaseStatType.Strength).GetCalculatedStatValue() * 2) + Random.Range(2, 8);
-        damageToDeal += CalculateCritical(damageToDeal);
 
-        Debug.Log("Damage dealt: " + damageToDeal);
+        damageToDeal += CalculateCritical(damageToDeal);
+        // Debug.Log("Damage dealt: " + damageToDeal);
         return damageToDeal;
     }
 

@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/* SOURCE: https://www.youtube.com/watch?v=7T4dFqT62Js&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=6
-   SOURCE: PROGRAMMING ANIMATION TO SWING THE SWORD THE WAY YOU WANT.
-           https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=8&t=255s     */
-
-
 public class Sword : MonoBehaviour, IWeapon
 {
     public List<BaseStat> Stats          { get; set; }
@@ -19,7 +13,7 @@ public class Sword : MonoBehaviour, IWeapon
 
     void Start()
     {
-        // Use this as reference to the object. Use this to trigger animation upon Attack
+        /* Use this as reference to the object. Use this to trigger animation upon Attack  */
         animator = GetComponent<Animator>();
     }
 
@@ -30,22 +24,17 @@ public class Sword : MonoBehaviour, IWeapon
         animator.SetTrigger("Base_Attack");
     }
 
-
-
     public void PerformSpecialAttack()
     {
         //Debug.Log(this.name + "attack!");
         animator.SetTrigger("Special_Attack");
     }
 
-    // Check when the collided object has entered collision.
-    // SOURCE: @34:17 https://www.youtube.com/watch?v=HrNebvxSUsU&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=7
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Enemy")
         {
-            // take the enemey, grab its reference/ component
-            // col.GetComponent<IEnemy>().TakeDamage(CharacterStats.GetStat(BaseStat.BaseStatType.Attack).GetCalculatedStatValue());
+            /* Take the enemey, grab its reference / component  */
             col.GetComponent<IEnemy>().TakeDamage(CurrentDamage);
         }
     }
