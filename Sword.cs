@@ -20,7 +20,7 @@ public class Sword : MonoBehaviour, IWeapon
     public void PerformAttack(int damage)
     {
         CurrentDamage = damage;
-        //Debug.Log(this.name +"attack!");
+        //Debug.Log(this.name +" attack!");
         animator.SetTrigger("Base_Attack");
     }
 

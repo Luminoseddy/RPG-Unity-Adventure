@@ -18,10 +18,20 @@ public class UIEventHandler : MonoBehaviour
     public delegate void PlayerLevelEventHandler();
     public static event  PlayerLevelEventHandler OnPlayerLevelChange;
 
-
     public static void ItemAddedToInventory(Item item)
     {
-        OnItemAddedToInventory(item);
+         OnItemAddedToInventory(item);
+    }
+
+    public static void ItemAddedToInventory(List<Item> items)
+    {
+        if (OnItemAddedToInventory != null)
+        {
+            foreach (Item item in items)
+            {
+                OnItemAddedToInventory(item);
+            }
+        }
     }
 
     public static void ItemEquipped(Item item)

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class Interactable : MonoBehaviour
 {
-
     [HideInInspector] public Rigidbody playerRigidbody;
 
     private bool hasInteracted,
@@ -13,7 +12,7 @@ public class Interactable : MonoBehaviour
 
     /* Virtual methods are subclasses, extends interactable and methods within that can be overwritten.
      * Passed from WorldInteraction class. */
-    public virtual void GetContact(Rigidbody playerRigidbody)
+    public virtual void Interaction(Rigidbody playerRigidbody)
     {
         hasInteracted = false;
         //this.playerRigidbody = playerRigidbody;
@@ -27,16 +26,8 @@ public class Interactable : MonoBehaviour
         // check for player agent
         if (!hasInteracted && playerRigidbody != null )
         {
-            //Checks the distance between playerAgent and player.
-            //if (playerRigidbody.remainingDistance <= playerRigidbody.stoppingDistance)
-            //{
-                //if (!isEnemy)
-                //{
-                //    Interact();
-                //}
-                //EnsureLookDirection();
-                //hasInteracted = true;
-            //}
+            Interact();
+            hasInteracted = true;
         }
     }
 
@@ -48,6 +39,6 @@ public class Interactable : MonoBehaviour
         //playerAgent.updateRotation = true; 
     }
 
-    public  virtual void Interact()          { Debug.Log("Interacted with bass class. Success."); }
-    private Vector3      GetTargetPosition() { return transform.position; }
+    public virtual void Interact() { Debug.Log("Interacted with bass class. Success."); }
+    // private Vector3      GetTargetPosition() { return transform.position; }
 }

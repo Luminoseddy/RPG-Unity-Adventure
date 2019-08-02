@@ -17,9 +17,9 @@ public class Item
     public string Description   { get; set; }
     public string ActionName    { get; set; }
     public string ItemName      { get; set; }
-    public bool   ItemModifier  { get; set; }
+    public bool   ItemModifier  { get; set; }/* Checks if it will modify stats of the player */
 
-    /* Constructor */
+    /* Constructor: invoked whenever an instance of the class is created. -> Item item = new Item(); <-  */
     public Item(List<BaseStat> _Stats, string _ObjectSlug)
     {
         this.Stats      = _Stats;

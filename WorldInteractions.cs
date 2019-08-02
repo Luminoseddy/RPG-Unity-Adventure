@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.AI;
 
 public class WorldInteractions : MonoBehaviour
@@ -19,8 +20,9 @@ public class WorldInteractions : MonoBehaviour
     void Update()
     {
         /* Checks if the mouse is hovering over the object. */
-        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())  
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())  
         {
+        
             GetInteractions();
         }
         //Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
@@ -41,11 +43,16 @@ public class WorldInteractions : MonoBehaviour
             if (interactedObject.tag == "Enemy")
             {
                 /* Component derived from interactable. */
-                interactedObject.GetComponent<Interactable>().GetContact(playerRigidbody);
+                interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
             }
             else if (interactedObject.tag == "Interactable Object")
             {
-                interactedObject.GetComponent<Interactable>().GetContact(playerRigidbody);
+                interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
+            }
+            else if (interactedObject.tag == "TreasureChest")
+			{
+				interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
+                Debug.Log("Clicking Chest");
             }
             else
             {

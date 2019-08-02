@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
@@ -22,10 +23,9 @@ public class InventoryUIDetails : MonoBehaviour
 
     public void SetItem(Item item, Button selectedButton)
     {
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); /* Displays item info when clicked on. */
+        statText.text = ""; /* Empty the string when adding data so that they don't concatenate. */
 
-        statText.text = ""; // Empty the string when adding data so that they don't concatenate.
-        // Source@6:30 https://www.youtube.com/watch?v=MECFk-6euQ0&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=13
         if (item.Stats != null)
         {
             foreach (BaseStat stat in item.Stats)
@@ -33,24 +33,21 @@ public class InventoryUIDetails : MonoBehaviour
                 statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
             }
         }
-
-        // test
+        
         itemInteractButton.onClick.RemoveAllListeners();
         this.item = item;
-
         selectedItemButton          = selectedButton;
         itemNameText.text           = item.ItemName;
         itemDescriptionText.text    = item.Description;
         itemInteractButtonText.text = item.ActionName;
-
         itemInteractButton.onClick.AddListener(OnItemInteract);
     }
 
     public void OnItemInteract()
     {
         // Debug.Log("Testing on item interact: " + item.ItemType.ToString());
-
-        if(item.ItemType == Item.ItemTypes.Consumable) // Consumable ItemTypes value.
+  
+        if (item.ItemType == Item.ItemTypes.Consumable) // Consumable ItemTypes value.
         {
             InventoryController.Instance.ConsumeItem(item);
             Destroy(selectedItemButton.gameObject);
@@ -61,7 +58,7 @@ public class InventoryUIDetails : MonoBehaviour
             Destroy(selectedItemButton.gameObject);
         }
 
-        item = null; // Null out the item once its used
-        gameObject.SetActive(false); // deactivate panelk when using item
+        item = null; /* Null out the item once its used */
+        gameObject.SetActive(false); /* deactivate panel when using item */
     }
 }

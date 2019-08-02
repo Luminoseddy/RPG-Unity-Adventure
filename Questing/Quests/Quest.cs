@@ -19,10 +19,9 @@ public class Quest : MonoBehaviour
         set { level = value; }  
     }
 
-
     public void CheckGoals()
     {
-        Completed = Goals.All(goal => goal.Completed);
+        Completed = Goals.All(goal => goal.Completed); /* When it this checks, it marks it as true. */
         if (Completed)
         {
             GiveReward();

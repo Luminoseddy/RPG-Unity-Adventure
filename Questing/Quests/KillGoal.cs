@@ -8,7 +8,7 @@ public class KillGoal : Goal
 
     public KillGoal(Quest quest, int enemyID, string description, bool completed, int currentAmount, int requiredAmount)
     {
-        this.Quest          = quest;
+        this.Quest          = quest; /* this being the property on the Goal class, and quest being the paramter we passed in the contrustolr. */
         this.EnemyID        = enemyID;
         this.Description    = description;
         this.Completed      = completed;

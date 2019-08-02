@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     // private Rigidbody playerRigidbody;
     private Animator playerMovementAnimation;
 
+
+    [HideInInspector]
     public Transform groundDirection,
                      fallDirection,
                      moveDirection;
@@ -32,8 +34,6 @@ public class Player : MonoBehaviour
     public PlayerLevel    PlayerLevel {get; set; }
     public CharacterStats characterStats;
 
-
-
     /* VELOCITY 
     ================================================ */
     Vector3 velocity;
@@ -44,8 +44,8 @@ public class Player : MonoBehaviour
 
     /* RUNNING 
     ================================================ */
-    public float baseSpeed = 1,
-                 runSpeed = 4, 
+    public float baseSpeed = 4,
+                 runSpeed = 10, 
                  rotateSpeed = 1;
 
     float currentSpeed;
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
                 showForwardDirection,
                 showStrafeDirection;
 
-     //public GameObject bombPrefab; 
+    //public GameObject bombPrefab; 
 
     //[Header("Visuals")]
     //public GameObject model;
@@ -316,7 +316,7 @@ public class Player : MonoBehaviour
         inputs.y = Axis(controls.forwards.GetControlBinding(), controls.backwards.GetControlBinding());
 
         // WARNING when inputs.y != 0
-        if ( (inputs.y > 0 || inputs.y < 0) && !mainCamera.autoRunReset)
+        if ((inputs.y > 0 || inputs.y < 0) && !mainCamera.autoRunReset)
         {
             autoRun = false;
         }

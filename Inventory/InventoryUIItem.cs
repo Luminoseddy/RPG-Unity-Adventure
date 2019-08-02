@@ -27,6 +27,7 @@ public class InventoryUIItem : MonoBehaviour
     {
         /* Go through the inventory controeller. */
         // Debug.Log("Clicking object inside inventory. Passed.");
+
         InventoryController.Instance.SetItemDetails(item, GetComponent<Button>());
     }
 }

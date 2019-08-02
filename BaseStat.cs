@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class BaseStat : MonoBehaviour
 {
+    /* By default, the first member of an enum has the value 0 and the value of each successive enum member is increased by 1. */
     public enum BaseStatType { Attack, Strength, AttackSpeed }
     public List<StatBonus> BaseAdditives { get; set; }
 
@@ -30,6 +31,8 @@ public class BaseStat : MonoBehaviour
         this.StatDescription = statDescription;
     }
 
+    /* Take a string representation of enum, represented by the index value.
+     * IF we look inside the Json file, the paramters below match the text within. */
     [Newtonsoft.Json.JsonConstructor]
     public BaseStat(BaseStatType statType, int baseValue, string statName)
     {

@@ -10,10 +10,11 @@ using UnityEngine;
 public class RespawnPoint : MonoBehaviour
 {
 
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform Player;
     [SerializeField] private Transform respawnPoint;
-     
-    void OnTriggerEnter(Collider other){
-        player.transform.position = respawnPoint.transform.position;
+
+    void OnTriggerEnter()
+    {
+        Player.transform.position = respawnPoint.transform.position;
     }
 }

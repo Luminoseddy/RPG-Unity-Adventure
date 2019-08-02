@@ -9,17 +9,17 @@ public class CameraController : MonoBehaviour
 {
 
     /* INPUT VARIABLE */
-    KeyCode leftMouse   = KeyCode.Mouse0,
-            rightMouse  = KeyCode.Mouse1,
+    KeyCode leftMouse = KeyCode.Mouse0,
+            rightMouse = KeyCode.Mouse1,
             middleMouse = KeyCode.Mouse2;
 
     [Range(0, 4)]
     public float cameraHeight = 1.75f;
 
     /* CAMERA VARIABLES */
-    public float cameraMaxDistance = 10, 
-                 cameraMaxTilt = 90, 
-                 cameraSpeed = 2, 
+    public float cameraMaxDistance = 10,
+                 cameraMaxTilt = 90,
+                 cameraSpeed = 2,
                  currentPan = 10, // Rotation on Y-axis
                  currentTilt = 10, // Rotation on X-axis
                  currentDistance = 5;
@@ -43,16 +43,16 @@ public class CameraController : MonoBehaviour
     public float cameraAdjustSpeed = 1;
 
     /* CATERGORY CAMERA SMOOTHING */
-    bool cameraXAdjust, 
+    bool cameraXAdjust,
          cameraYAdjust;
-    float panAngle, 
+    float panAngle,
           panOffset,
-          rotationXCushoin = 3, 
-          rotationXSpeed = 0, 
+          rotationXCushoin = 3,
+          rotationXSpeed = 0,
           rotationYSpeed = 0,
-          yRotationMin = 0, 
+          yRotationMin = 0,
           yRotationMax = 20;
-        
+
     void Start()
     {
         player = FindObjectOfType<Player>();

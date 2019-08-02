@@ -12,9 +12,9 @@ public class Fireball : MonoBehaviour
 
     void Start()
     {
+        
         Range = 20f;
         Damage = 4;
-
         spawnPosition = transform.position;
 
         /* Knudge the object the player is facing using the Direction vector which points the direction the player is facing. */
@@ -33,10 +33,12 @@ public class Fireball : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+
         if(col.transform.tag == "Enemy")
-        {
+        {           
             col.transform.GetComponent<IEnemy>().TakeDamage(Damage);
-        }
+            
+        }    
         Extinguish(); /* If enemy or not enemy, it destorys itself. */
     }
 

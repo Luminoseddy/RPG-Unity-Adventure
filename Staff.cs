@@ -12,6 +12,7 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 
     void Start()
     {
+
         fireball = Resources.Load<Fireball>("Weapons/Projectiles/Fireball");
         /* Use as reference to the object. Use this to trigger animation upon Attack */
         animator = GetComponent<Animator>();
@@ -19,8 +20,9 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 
     public void PerformAttack(int Damage)
     {
-        //Debug.Log(this.name +"attack!");
+        //Debug.Log(this.name +"attack!");    
         animator.SetTrigger("Base_Attack");
+
     }
 
     public void PerformSpecialAttack()
@@ -37,7 +39,6 @@ public class Staff: MonoBehaviour, IWeapon, IProjectileWeapon
 }
 
 /* Old code for basic sword rotations */
-
 
 
 //public float swingingSpeed = 2f;      // how fast the weapon moves forward

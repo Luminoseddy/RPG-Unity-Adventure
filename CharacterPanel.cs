@@ -28,6 +28,8 @@ public class CharacterPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(false); /* Fixes the problem from items being duplicated: caused if you don't click the playerStats button first before equipting. */
+
         playerWeaponController = player.GetComponent<PlayerWeaponController>();
         UIEventHandler.OnPlayerHealthChanged += UpdateHealth;
         UIEventHandler.OnStatsChanged += UpdateStats;

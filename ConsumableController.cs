@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-//SOURCE 20:30 https://www.youtube.com/watch?v=vGEkq9yNzxw&list=PLivfKP2ufIK6ToVMtpc_KTHlJRZjuE1z0&index=9
-
 public class ConsumableController : MonoBehaviour
 {
-    CharacterStats stats; // Reference to Char stats. 
+    CharacterStats stats; 
 
     void Start()
     {
@@ -20,12 +17,12 @@ public class ConsumableController : MonoBehaviour
 
         if (item.ItemModifier)
         {
+            /* Allows the consumable item to have a stat reference to boost the stats. */
             itemToSpawn.GetComponent<IConsumable>().Consume(stats);
         }
         else
         {
             itemToSpawn.GetComponent<IConsumable>().Consume();
         }
-        
     }
 }

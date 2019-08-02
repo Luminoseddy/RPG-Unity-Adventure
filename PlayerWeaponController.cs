@@ -81,6 +81,8 @@ public class PlayerWeaponController : MonoBehaviour
 
         damageToDeal += CalculateCritical(damageToDeal);
         // Debug.Log("Damage dealt: " + damageToDeal);
+
+        
         return damageToDeal;
     }
 
