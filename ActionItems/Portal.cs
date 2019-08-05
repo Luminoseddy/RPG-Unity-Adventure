@@ -21,6 +21,6 @@ public class Portal : ActionItem
     public override void Interact()
     {
        PortalController.ActivatePortal(linkedPortals);
-       // playerAgent.ResetPath();
+       // playerRigidbody.ResetPath();
     }
 }

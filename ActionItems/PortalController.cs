@@ -7,11 +7,10 @@ public class PortalController : MonoBehaviour
 {
     [SerializeField] private Button button;
 
-    private Portal[]   portal;
-    private Player  player;
+    private Player player;
+    private Portal[] portal;
     private GameObject panel;
 
-  
     // Use this for initialization
     void Start()
     {
@@ -28,12 +27,12 @@ public class PortalController : MonoBehaviour
             portalButton.GetComponentInChildren<Text>().text = portals[i].name;
             int x = i;
             portalButton.onClick.AddListener(delegate { OnPortalButtonClick(portals[x]); });
-        }    
+        }
     }
 
     void OnPortalButtonClick(Portal portal)
     {
-        player.transform.position = portal.TeleportLocation;
+        player.gameObject.transform.position = portal.TeleportLocation;
         foreach (Button button in GetComponentsInChildren<Button>())
         {
             Destroy(button.gameObject);
@@ -41,4 +40,7 @@ public class PortalController : MonoBehaviour
         panel.SetActive(false);
     }
 }
+
+
+
 

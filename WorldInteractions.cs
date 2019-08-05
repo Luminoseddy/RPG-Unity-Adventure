@@ -20,22 +20,22 @@ public class WorldInteractions : MonoBehaviour
     void Update()
     {
         /* Checks if the mouse is hovering over the object. */
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())  
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-        
+
             GetInteractions();
         }
         //Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
     }
 
     void GetInteractions()
-    { 
+    {
         /* Takes the coordinate of the mouse, sends out a ray in the screen space of the viewport.*/
         Ray interactionRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         /* Store the information we get back. */
         RaycastHit interactionInfo;
         /* Pass the camera, pass the raycast hit and output the information of the raycast object, how far does the ray go? inifnite). */
-        if (Physics.Raycast(interactionRay, out interactionInfo, 8.0f))
+        if (Physics.Raycast(interactionRay, out interactionInfo, 20.0f))
         {
             /* Stores the object we hit: goes through the component collider. */
             GameObject interactedObject = interactionInfo.collider.gameObject;
@@ -50,16 +50,17 @@ public class WorldInteractions : MonoBehaviour
                 interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
             }
             else if (interactedObject.tag == "TreasureChest")
-			{
-				interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
+            {
+                interactedObject.GetComponent<Interactable>().Interaction(playerRigidbody);
                 Debug.Log("Clicking Chest");
             }
             else
             {
-                 //Debug.Log("Not clicking interactables..");
-                 //playerAgent.stoppingDistance = 0;
-                 //playerAgent.destination = interactionInfo.point;           
+                //Debug.Log("Not clicking interactables..");
+                //playerAgent.stoppingDistance = 0;
+                //playerAgent.destination = interactionInfo.point;           
             }
         }
     }
 }
+

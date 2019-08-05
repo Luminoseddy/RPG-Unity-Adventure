@@ -58,7 +58,8 @@ public class PlayerWeaponController : MonoBehaviour
 		{
 			PerformWeaponAttack();
 		}
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        
+        if (Input.GetKeyDown(KeyCode.Alpha8))
 		{
 			PerformWeaponSpecialAttack();
 		}
@@ -81,8 +82,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         damageToDeal += CalculateCritical(damageToDeal);
         // Debug.Log("Damage dealt: " + damageToDeal);
-
-        
+     
         return damageToDeal;
     }
 

@@ -23,7 +23,7 @@ public class Sword : MonoBehaviour, IWeapon
         //Debug.Log(this.name +" attack!");
         animator.SetTrigger("Base_Attack");
     }
-
+   
     public void PerformSpecialAttack()
     {
         //Debug.Log(this.name + "attack!");

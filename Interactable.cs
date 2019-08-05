@@ -14,8 +14,8 @@ public class Interactable : MonoBehaviour
      * Passed from WorldInteraction class. */
     public virtual void Interaction(Rigidbody playerRigidbody)
     {
-        hasInteracted = false;
-        //this.playerRigidbody = playerRigidbody;
+        // hasInteracted = false;
+        // this.playerRigidbody = playerRigidbody;
         //playerAgent.stoppingDistance = 3f;
         //playerAgent.destination = transform.position;
         Interact();
@@ -24,11 +24,11 @@ public class Interactable : MonoBehaviour
     void Update()
     {
         // check for player agent
-        if (!hasInteracted && playerRigidbody != null )
-        {
-            Interact();
-            hasInteracted = true;
-        }
+        //if (!hasInteracted && playerRigidbody != null )
+        //{
+        //    Interact();
+        //    hasInteracted = true;
+        //}
     }
 
     void EnsureLookDirection()
@@ -41,4 +41,9 @@ public class Interactable : MonoBehaviour
 
     public virtual void Interact() { Debug.Log("Interacted with bass class. Success."); }
     // private Vector3      GetTargetPosition() { return transform.position; }
+
 }
+
+
+
+
