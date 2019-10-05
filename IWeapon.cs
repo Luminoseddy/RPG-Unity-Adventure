@@ -6,10 +6,10 @@ using UnityEngine;
  * It is left to the class that implements the interface by providing implementation for all the members of the interface. 
  * Interface makes it easy to maintain a program.
  */
-public interface IWeapon 
+public interface IWeapon
 {
     /* Using BaseStats to define a way to define the stats for weapons */
-    List <BaseStat> Stats { get; set; }
+    List<BaseStat> Stats { get; set; }
 
     int CurrentDamage { get; set; }
 
@@ -18,4 +18,13 @@ public interface IWeapon
 
     /* Some weapons will have this method. */
     void PerformSpecialAttack();
+
 }
+// Any weapon to find it we GetComponent<Iweapon> 
+
+// We need to create a way to know when a weapon is a weapon.
+// To know that a sword is a weapon, therefore has, attack abilities, has stats, etc.
+
+// Containing different weapons would always require to search for THAT game weapon, not efficient.
+// 
+

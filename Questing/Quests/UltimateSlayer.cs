@@ -15,7 +15,7 @@ public class UltimateSlayer : Quest
         Goals = new List<Goal>
         {
             /* Quest: EneryId 0, description, completed?, currentAmount, requiredAmount. */
-            new KillGoal(this, 0, "Kill 30 Skelly's", false, 0, 30),
+            new KillGoal(this, 0, "Kill 30 Skelly's", false, 0, 4),
 
             /* 'this' being the object of ultimate slayer, and the object being a quest. */
             //new KillGoal(this, 1, "Kill 1 Demons in the Karamja Island.", false, 0, 2),

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class StatBonus 
 {
+    /* Whenever new statBonus is created, we add it to this property,
+     * So if we equip a sword, that added power, then we add the BonusValue using
+     * this constructor to add 5 power to that weapon. */
     public int BonusValue { get; set; }
 
-    /* A constructor is a special method of the class which gets automatically invoked
-     * whenever an instance of the class is created. Like methods, a constructor also contains
-     * the collection of instructions that are executed at the time of Object creation.
-     * It is used to assign initial values to the data members of the same class.
-     */
+
     public StatBonus(int bonusValue)
     {
         this.BonusValue = bonusValue;

@@ -17,7 +17,9 @@ public class CharacterStats
     }
 
     public BaseStat GetStat(BaseStat.BaseStatType stat)
-    {
+    { 
+        /* List of stats we're adding stats too
+         * Find will equal to the objet it found. */
         return this.stats.Find(x => x.StatType == stat); 
     }
 
@@ -26,6 +28,8 @@ public class CharacterStats
      * Allows you to pass a list of different stats for you in 1 go. att, def, str etc. */
     public void AddStatsBonus(List<BaseStat> statBonuses)
     {
+        /* Iterates through all stat bonus, for ex. if we're passing in 2 statBonuses
+         * out of 7 exisiting stats, then inside we find the stats that matches.  */
         foreach(BaseStat statBonus in statBonuses)
         {
             /* We have the BaseStat in statBonus. We make a new statBonus out of the
@@ -36,7 +40,7 @@ public class CharacterStats
 
     /* Call this when UNEquipting a weapon.
      * Causing the stats to reduce back to its original default values.
-     * Same concept as the AddStatBonus, but isntead, we are removing.
+     * Same concept as the AddStatBonus, but instead, we are removing.
      */
     public void RemoveStatsBonus(List<BaseStat> statBonuses)
     {

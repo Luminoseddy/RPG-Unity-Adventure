@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    /* Determine what weapon is equipped to the hand. */
     [HideInInspector] public GameObject EquippedWeapon { get; set; }
 
+    /* Reference to the player hand. */
     public GameObject playerHand;
 
     Transform spawnProjectile;
@@ -19,6 +21,7 @@ public class PlayerWeaponController : MonoBehaviour
         characterStats = GetComponent<Player>().characterStats;
     }
 
+    
     public void EquipWeapon(Item itemToEquip)
     {
         /* This is where we destroy the item in the players hand to swap/remove weapons. */
@@ -26,8 +29,10 @@ public class PlayerWeaponController : MonoBehaviour
         {
             UnequipWeapon();
         }
-        /* Going inside our 'Resources' folder and searching our only weapon called ObjectSlug */
+        /* Going inside our 'Resources' folder and searching our weapon  */
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
+
+        /* And we now know that this equipped weapon will contain stas from IWeapon*/
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
 
         /* Not all weapons are projectile weapons, hence we need to check the type of weapon is being equipped. */
@@ -39,6 +44,7 @@ public class PlayerWeaponController : MonoBehaviour
         EquippedWeapon.transform.SetParent(playerHand.transform);
         equippedWeapon.Stats = itemToEquip.Stats;
         currentlyEquippedItem = itemToEquip;
+        /* After equipping, we add the stat bonuses. */
         characterStats.AddStatsBonus(itemToEquip.Stats);
         UIEventHandler.ItemEquipped(itemToEquip);
         UIEventHandler.StatsChanged();
