@@ -21,6 +21,7 @@ public class Sword : MonoBehaviour, IWeapon
     {
         CurrentDamage = damage;
         //Debug.Log(this.name +" attack!");
+        /* The string is what the animated attack is called inside th animator. */
         animator.SetTrigger("Base_Attack");
     }
    
@@ -30,6 +31,8 @@ public class Sword : MonoBehaviour, IWeapon
         animator.SetTrigger("Special_Attack");
     }
 
+
+    /* This happens in the physics engine. */
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Enemy")

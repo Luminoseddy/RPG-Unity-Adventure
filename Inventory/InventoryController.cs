@@ -9,10 +9,12 @@ public class InventoryController : MonoBehaviour
     /* REFERENCE TO WEAPON CONTROLLER */
     public static InventoryController Instance { get; set; }
 
-    public PlayerWeaponController playerWeaponController;
-    public ConsumableController   consumableController;
+    public List<Item> playerItems = new List<Item>();
+
     public InventoryUIDetails     inventoryUIDetailsPanel;
-    public List<Item>             playerItems = new List<Item>();
+    public ConsumableController   consumableController;
+    public PlayerWeaponController playerWeaponController;
+    
 
     void Start()
     {

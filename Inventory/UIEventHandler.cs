@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIEventHandler : MonoBehaviour
 {
-    // Delegates:  Apointer to a method
+    // Recall Delegates:  A pointer to a method
     public delegate void ItemEventHandler(Item item);
     public static event  ItemEventHandler OnItemAddedToInventory;
     public static event  ItemEventHandler OnItemEquipped;

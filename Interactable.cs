@@ -7,8 +7,8 @@ public class Interactable : MonoBehaviour
 {
     [HideInInspector] public Rigidbody playerRigidbody;
 
-    private bool hasInteracted,
-                 isEnemy;
+    private bool hasInteracted, isEnemy;
+
 
     /* Virtual methods are subclasses, extends interactable and methods within that can be overwritten.
      * Passed from WorldInteraction class. */

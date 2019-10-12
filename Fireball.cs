@@ -16,7 +16,8 @@ public class Fireball : MonoBehaviour
         Damage = 4;
         spawnPosition = transform.position;
 
-        /* Knudge the object the player is facing using the Direction vector which points the direction the player is facing. */
+        /* Knudge the object the player is facing using the Direction vector which points the direction the player is facing.
+         * and multiply it by a value to give it speed. */
         GetComponent<Rigidbody>().AddForce(Direction * 50f);
     }
 

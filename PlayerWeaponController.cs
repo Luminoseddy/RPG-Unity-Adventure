@@ -17,6 +17,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Start()
     {
+        /* Find the string object name*/
         spawnProjectile = transform.Find("ProjectileSpawn");
         characterStats = GetComponent<Player>().characterStats;
     }
@@ -30,7 +31,8 @@ public class PlayerWeaponController : MonoBehaviour
             UnequipWeapon();
         }
         /* Going inside our 'Resources' folder and searching our weapon  */
-        EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug), playerHand.transform.position, playerHand.transform.rotation);
+        EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapons/" + itemToEquip.ObjectSlug),
+            playerHand.transform.position, playerHand.transform.rotation);
 
         /* And we now know that this equipped weapon will contain stas from IWeapon*/
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();

@@ -8,13 +8,11 @@ public class Skelly : MonoBehaviour, IEnemy
 {
     public int       Experience { get; set; }
     public int       ID         { get; set; }
+
     public Spawner   Spawner    { get; set; }
     public DropTable DropTable  { get; set; }
     
-    public float attack,
-                 strength,
-                 maxHealth,
-                 currentHealth;
+    public float attack, strength, maxHealth, currentHealth;
 
     private Collider[]     withinAggroColliders;
     public  PickupItem     pickupItem;
